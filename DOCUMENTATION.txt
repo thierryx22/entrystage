@@ -1,0 +1,208 @@
+=== EntryStage — documentation ===
+
+Full guide of the plugin. The short presentation is in readme.txt; the French version of this guide is in LISEZMOI.txt.
+
+== Using the list ==
+
+= Columns =
+
+Columns are chosen in form > Settings > EntryStage, step Columns, in two zones: the available fields and the columns of the list. Each field has buttons to add it as a column, to move it up or down and to remove it. Every button can be used with the keyboard.
+
+For each column: a label (empty: the field label), a display mode (offered only when the field can be shown in more than one way), a width (for example 120px or 15%; empty: automatic) and "Sortable".
+A switch that cannot be used is greyed out, with the reason.
+Date is a column too: it can be moved or removed.
+Actions always comes last. On phones each row becomes a card and widths are ignored.
+
+The first test builds chose the columns in the form editor (Appearance tab of each field). This option has left the form editor: columns chosen there are taken over as they are, with their order and widths, until the settings page is saved once.
+
+
+= Pictures and files =
+
+Display modes of a File upload field:
+
+* File name (link), the default: one link per file.
+* Thumbnail (pictures): JPG, PNG, GIF and WebP files show as a square thumbnail of 48 or 96 pixels (step Display); a click opens the picture. Other files show as a link. With several pictures, 3 thumbnails are shown, then "+N".
+* Download button: a button that downloads the file.
+* The mode names say what is shown. For a choice field (drop-down, radio buttons, checkboxes): "Label of the choice" (the text seen by the person filling in the form, for example "Workshop 6") or "Stored value of the choice" (the hidden value of the choice, for example "6"); an example taken from the first choice is shown under the menu. For a Name or Address field: "Whole field" or "Only: …" one part. For other fields: "Value as entered".
+
+Rules and limits:
+
+* Links always go through the Gravity Forms download address, never the real location of the file.
+* Thumbnails load the original picture (Gravity Forms keeps no smaller copy): keep 25 rows per page or fewer when a column shows pictures.
+* "Downloads only for people who may see the entry" (step Display, off by default): the download links of the form then need a logged-in user who may see the entry in the list, or who can view entries in the admin. Gravity Forms gives the entry to check from version 2.9.28.1; with an older version the check stops at "logged in and allowed to see the list". File links in notifications no longer open for recipients who are not logged in, and visitors of a public list no longer see the thumbnails. The real address of a file (shown in the admin) is not covered: it stays as Gravity Forms makes it.
+* Signature fields (Gravity Forms Signature add-on): thumbnail when the add-on gives the address of the signature picture; otherwise shown as in Gravity Forms.
+
+= Field types =
+
+* Not offered: HTML, Section, Page break, CAPTCHA (no value), Password and Credit card (never shown).
+* Name and Address: shown whole, or one part only (for example the last name or the city). Sorting needs one part.
+* Drop-down and Radio buttons: label of the choice (default) or stored value; sortable.
+* Checkboxes and Multi select: labels or stored values; not sortable.
+* Paragraph text: whole, or the beginning of the text (120 characters).
+* File upload: see Pictures and files; not sortable.
+* List, Consent, Signature, Post image, Post category, Post tags, Post custom field: not sortable.
+* Number, Date, Time, Phone, Email, Website, Hidden, Single line text, calculations and pricing fields: shown as in Gravity Forms; sortable (numbers are sorted as numbers).
+* Fields of other add-ons: shown as in Gravity Forms.
+* Administrative and hidden fields can be shown; the settings warn that everyone who sees the list will see them.
+
+= Block =
+
+In the block editor, add the "EntryStage list" block (Widgets category, or type "EntryStage"). In the block settings, choose:
+
+* Form: the forms whose list is not enabled are marked; enable it in the form settings, EntryStage tab.
+* Entries shown: as set in the form (Access step), only the entries of the person logged in, or only the entries of one user (user ID).
+* Several forms, in tabs: a personal space; tick the forms to show.
+* Rows per page: empty to keep the setting of the form.
+* Page of the form (for Edit and Duplicate): page number, path or address; empty to keep the setting of the form.
+
+The editor shows a preview of the list; its buttons and links only work on the site. The columns, buttons and look come from the form settings, as for the shortcode. The block and the shortcode give the same list: use either one.
+
+= Shortcode options =
+
+`[entrystage form="12"]` shows the list of form 12. Options can be added to show only part of the entries; visitors cannot change them:
+
+* `user="5"`: only the entries created by user number 5. `user="current"`: only the entries of the person logged in.
+* `page="contact/my-form"`: Edit and Duplicate reopen the Gravity Forms form filled in with the entry, so they need a page that shows this form. By default it is the page chosen in the Access step. This option names another one for this list only (page number, path or address of a page of your site), for example one page per agency, each showing the form.
+* `per_page="50"`: number of entries per page.
+* `forms="12,15,20"` (instead of `form`): personal space, see below.
+
+Example: `[entrystage form="12" user="current" per_page="50"]`
+
+These options only limit what the list shows. The buttons still follow the rights set in the form settings.
+
+= Personal space (several forms) =
+
+`[entrystage forms="12,15,20" user="current"]` shows several forms on one page, one tab per form, for example a "My requests" page. Each tab shows the number of entries the person can see, and holds the list of that form exactly as set in its settings: columns, buttons, search, sorting and pages. The search, the sorting and the buttons stay in the tab being used.
+
+* Only the forms whose list is enabled and that the person may see get a tab; with a single one, no tab is shown.
+* `user` and `per_page` apply to every tab. `page` is not used here: each form opens Edit and Duplicate on its own page.
+* The order of the tabs is the order of the numbers in `forms`; at most 20 forms.
+* In the block editor: "EntryStage list" block, switch "Several forms, in tabs", then tick the forms.
+
+= Who sees what =
+
+* Who can see the list: everyone, logged-in users only, or users with some roles (the list of roles appears when this choice is selected).
+* Entries shown: only the entries created by the user, or all entries.
+* Users can edit, duplicate and archive their own entries only. With "All entries", they can also view the other entries.
+* List managers see every entry and use every enabled button on every entry. Administrators and users who can edit Gravity Forms entries are always managers; you can add other roles.
+
+= Sorting and pages =
+
+Click a column title to sort; click again to reverse. Choose the initial sort, its direction and the number of entries per page in the settings. Visitors can change the number of entries per page (10, 25, 50 or 100) at the bottom of the list, next to the pagination.
+
+= Printing =
+
+Turn on "Print button" in the form settings (step Display, Tools above the list). The button opens a printable page with the entries matching the search and the filters, every page included (at most 500), in the order of the list, without buttons; the print window of the browser opens by itself. The page shows the title of the page, the date of printing, the number of entries and the search used. On paper, only the list is printed, without the header, menus and footer of the theme.
+
+Printing an ordinary page of the list (Ctrl+P) also leaves out the buttons, the search box and the pagination.
+
+= Editing an entry =
+
+The Edit button opens the page of the form with the entry already filled in. A banner reminds the user which entry is being edited, with a Cancel link. When the form is submitted, the same entry is updated, a note is added to the entry, and the user goes back to the list (or sees the form confirmation, depending on the settings).
+
+* Files: an upload field shows the current file. If the user adds no new file, the current one is kept.
+* Fields that must be unique ("No duplicates") ignore the entry being edited.
+* Notifications: choose whether they are sent again after an edit.
+* Administrative fields keep their value.
+
+= Duplicating an entry =
+
+The Duplicate button opens the form filled in with the values of the entry. Submitting creates a new entry that belongs to the user. Upload fields start empty.
+
+= Archiving an entry =
+
+By default, Archive moves the entry to the Gravity Forms trash, where an administrator can restore it. You can choose permanent deletion instead. A confirmation question is asked before archiving; leave the question empty to remove it.
+
+
+= Search =
+
+* Search box: finds the entries where a field contains the text typed.
+
+= Language =
+
+The plugin is translated on translate.wordpress.org: its interface is shown in the language of WordPress (or of your profile) when a translation for that language is available, in English otherwise. Labels you type or save in a form's settings stay as saved.
+
+= Look and feel =
+
+The Actions column never takes more than 25 % of the table width; with labels, its buttons go onto several lines.
+
+Buttons: in each form's settings, choose whether the action buttons show icons (the label appears when the pointer rests on the icon and is read by screen readers), icons and labels, or labels only.
+
+Without any code, in Forms > Settings > EntryStage > Appearance (for every list of the site):
+
+* Style of the lists:
+  * EntryStage: the look of the plugin, with the colours chosen below;
+  * Minimal: layout only (columns, cards on phones, widths, Actions column limited to 25 %); colours, buttons and fonts come from your theme, lines take a neutral shade of the text colour;
+  * None: no stylesheet; you style the list entirely from your theme.
+  A site that had unticked the former "Use the plugin stylesheet" box gets "None".
+* Colours (EntryStage style): main colour, lines, background of every other row, secondary text, Archive and errors. Each picker has a button to go back to the original colour.
+* Corner rounding (EntryStage style): from 0 (square) to 24 pixels.
+
+For finer changes, add CSS to your theme (Appearance > Customize > Additional CSS). It is loaded after the plugin stylesheet: with the same selector, your rule wins (for the buttons, add !important, see below).
+
+1. CSS variables (colours and corners)
+
+Set them on `.estg` (every list) or on `#estg-1` (the list of form 1):
+
+`.estg { --estg-accent: #7d6b3f; --estg-radius: 0; }`
+
+* `--estg-accent`: main colour (buttons, links, icons, active tab and page).
+* `--estg-border`: borders (table, action buttons, fields).
+* `--estg-muted`: secondary text (counters, labels, chevron).
+* `--estg-bg-alt`: background of every other row and of open rows.
+* `--estg-danger`: red of Archive on hover and of error messages.
+* `--estg-radius`: corner rounding.
+* `--estg-thumb`: size of thumbnails (48 px, or 96 px depending on the setting).
+
+2. Stable classes
+
+They all start with `estg-` and will not change from one version to the next.
+
+* List: `.estg` (the whole list), `#estg-N` (list of form N), `.estg-cards` (added when rows are shown as cards).
+* Toolbar: `.estg-toolbar` (search and filters), `.estg-field`.
+* Table: `.estg-table`, `.estg-row` (a row), `.estg-col-KEY` (a column: `.estg-col-_date`, or `.estg-col-8` for field 8).
+* Actions: `.estg-actions` (cell), `.estg-act-row` (row of icons), `.estg-act` (each button), then `.estg-act-view`, `.estg-act-edit`, `.estg-act-duplicate`, `.estg-act-archive`. `.estg-icon` (icons).
+* Files: `.estg-thumb` (thumbnail), `.estg-file` (link to a file).
+* Other: `.estg-btn` (Filter button), `.estg-pages` (pagination), `.estg-detail` (entry view), `.estg-editing` (banner above a form being edited), `.estg-notice` (messages).
+
+Buttons of the list (EntryStage style) are protected against the styles some themes give to every button (background, capitals, padding), even when the theme uses !important. To change them, use the same kind of selector and add !important:
+
+`.estg .estg-table button.estg-act, .estg .estg-table a.estg-act { border-radius: 50% !important; }`
+
+`#estg-1 .estg-act-archive:hover { color: #000 !important; }`
+
+
+To change the drawing of an icon, use the `estg_icon` filter (see For developers).
+
+The list never scrolls sideways: long values wrap, a word too long for its column is cut with a hyphen following the language of the site (the browser needs the hyphenation rules of that language; otherwise the word is cut without a hyphen), and when the columns cannot fit the width available (below 700 pixels, or with many columns), each row becomes a card.
+
+== For developers ==
+
+All hooks start with `estg_`.
+
+Filters:
+
+* `estg_settings( $settings, $form )`: list settings of a form.
+* `estg_columns( $columns, $form )`: field columns of the list.
+* `estg_layout( $layout, $form, $settings )`: columns in display order, with their width, display mode and sort key.
+* `estg_field_modes( $modes, $field )`: display modes offered for a field.
+* `estg_can_see_entry( $allowed, $entry, $settings )`: whether the current user may see an entry (protected downloads).
+* `estg_save_settings( $settings, $form )`: settings of a form before they are saved from the settings page.
+* `estg_is_manager( $is_manager, $settings )`: whether the current user manages the list.
+* `estg_can_see_list( $allowed, $settings )`: whether the current user sees the list.
+* `estg_can( $allowed, $action, $entry, $settings )`: permission for an action (view, edit, duplicate, archive).
+* `estg_search_criteria( $criteria, $form, $state )`: Gravity Forms search criteria of the list.
+* `estg_cell_value( $html, $column, $entry, $form )`: content of a cell or of a detail (`$column['mode']` gives the display mode).
+* `estg_row_classes( $classes, $entry, $settings )`: CSS classes of a row.
+* `estg_row_actions( $links, $entry, $settings )`: action links of a row.
+* `estg_space_tabs( $tabs, $active )`: tabs of a personal space (form id => title and count).
+* `estg_icon( $svg, $name )`: drawing of an icon (inner elements of a 24×24 SVG; names: view, edit, duplicate, archive, pdf, next, export, download, file, chevron).
+* `estg_prefill_values( $values, $entry, $form, $action )`: values used to fill the form.
+* `estg_editing_banner( $html, $context, $form )`: banner above a form opened from the list.
+* `estg_entry_view_html( $html, $entry, $form, $settings )`: entry view.
+
+Actions:
+
+* `estg_before_list( $form, $settings, $state )` and `estg_after_list( $form, $settings, $state )`.
+* `estg_entry_updated( $entry, $original, $form )`.
+* `estg_entry_archived( $entry, $mode )`.

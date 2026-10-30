@@ -1,0 +1,262 @@
+/* EntryStage — front-end list. Colours can be changed with the CSS variables below. */
+/* also on the personal space (tabs of several forms), which holds the lists. */
+.estg, .estg-space {
+	--estg-accent: #2563eb;
+	--estg-border: #e5e7eb;
+	--estg-muted: #6b7280;
+	--estg-bg-alt: #f9fafb;
+	--estg-danger: #b91c1c;
+	--estg-radius: 6px;
+}
+.estg { font-size: 0.95em; margin: 1em 0; }
+.estg *, .estg *::before, .estg *::after { box-sizing: border-box; }
+.estg-space { font-size: 0.95em; margin: 1em 0; }
+.estg-space > .estg { font-size: 1em; margin-top: 0; }
+.estg .screen-reader-text { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); border: 0; white-space: nowrap; }
+
+/* Messages */
+.estg-notice { padding: .7em 1em; margin: 0 0 1em; border-left: 4px solid #059669; background: #ecfdf5; border-radius: var(--estg-radius); }
+.estg-notice.is-error { border-color: var(--estg-danger); background: #fef2f2; }
+.estg-editing { padding: .7em 1em; margin: 0 0 1em; border-left: 4px solid var(--estg-accent); background: #eff6ff; border-radius: var(--estg-radius); }
+.estg-current-file { display: block; margin-top: .3em; color: var(--estg-muted); }
+
+/* Status tabs */
+.estg-tabs { display: flex; flex-wrap: wrap; gap: .4em; margin: 0 0 1em; }
+.estg-tab { --estg-pill: var(--estg-accent); display: inline-flex; align-items: center; gap: .4em; padding: .35em .8em; border: 1px solid var(--estg-border); border-radius: 999px; text-decoration: none; color: inherit; }
+.estg-tab.is-active { border-color: var(--estg-pill); box-shadow: inset 0 0 0 1px var(--estg-pill); font-weight: 600; }
+.estg-count { font-size: .85em; color: var(--estg-muted); }
+
+/* Toolbar */
+.estg-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .6em 1em; margin: 0 0 1em; }
+.estg-field { display: flex; flex-direction: column; gap: .2em; margin: 0; }
+.estg-field > span { font-size: .85em; color: var(--estg-muted); }
+.estg-field input, .estg-field select { min-height: 2.2em; padding: .3em .5em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); }
+.estg-tools { display: flex; align-items: center; gap: .6em; margin-left: auto; }
+
+/* Buttons and links */
+.estg-btn { display: inline-block; padding: .4em .9em; border: 1px solid var(--estg-accent); border-radius: var(--estg-radius); background: var(--estg-accent); color: #fff; cursor: pointer; text-decoration: none; line-height: 1.4; font: inherit; }
+.estg-btn:hover, .estg-btn:focus { filter: brightness(.92); color: #fff; }
+.estg-btn-ghost { background: transparent; color: var(--estg-accent); }
+.estg-btn-ghost:hover, .estg-btn-ghost:focus { color: var(--estg-accent); background: #eff6ff; }
+.estg-btn-small { padding: .15em .5em; font-size: .85em; }
+.estg-link { background: none; border: 0; padding: 0; color: var(--estg-accent); cursor: pointer; text-decoration: underline; font: inherit; }
+.estg-danger { color: var(--estg-danger); }
+.estg-actions { white-space: normal; }
+.estg-table td.estg-actions { line-height: 2.2; }
+.estg-actions > * + * { margin-left: .3em; }
+.estg-icon { flex: none; vertical-align: -.2em; }
+.estg-act { display: inline-flex; align-items: center; gap: .35em; padding: .35em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: transparent; color: var(--estg-accent); cursor: pointer; font: inherit; line-height: 1; text-decoration: none; vertical-align: middle; }
+.estg-act:hover, .estg-act:focus-visible { border-color: var(--estg-accent); background: color-mix(in srgb, var(--estg-accent) 10%, transparent); color: var(--estg-accent); }
+.estg-act-archive:hover, .estg-act-archive:focus-visible { color: var(--estg-danger); border-color: var(--estg-danger); background: color-mix(in srgb, var(--estg-danger) 8%, transparent); }
+.estg-act-text { padding-right: .15em; }
+.estg-btn { display: inline-flex; align-items: center; gap: .35em; }
+
+/* Bulk */
+.estg-bulk { display: flex; flex-wrap: wrap; align-items: center; gap: .5em; margin: 0 0 .6em; }
+.estg-selected { color: var(--estg-muted); font-size: .9em; }
+.estg-check { width: 2.2em; text-align: center; }
+
+/* Table */
+/* The list always fits its container: no horizontal scroll bar; long values wrap. */
+.estg-scroll { overflow-x: visible; max-width: 100%; }
+.estg-table { width: 100%; border-collapse: collapse; margin: 0; }
+.estg-table th, .estg-table td { padding: .55em .7em; border-bottom: 1px solid var(--estg-border); text-align: left; vertical-align: top; }
+/* themes (Divi: .entry-content tr td { padding: 6px 24px }) must not widen the cells. */
+.estg .estg-table th, .estg .estg-table td { padding: .55em .7em; border-top: 0; }
+.estg .estg-table td.estg-more-cell, .estg .estg-table th.estg-more-col { padding-left: .3em; padding-right: .3em; }
+.estg-table thead th { font-weight: 600; border-bottom-width: 2px; white-space: normal; }
+.estg-table { max-width: 100%; }
+/* a word too long for its column is cut with a hyphen, following the language of the page (lang attribute);
+   very long words (addresses, links) can still wrap anywhere. */
+.estg-table td, .estg-table th { overflow-wrap: anywhere; word-break: normal; -webkit-hyphens: auto; hyphens: auto; }
+.estg-table th { min-width: 5em; }
+.estg-table th.estg-check { min-width: 0; }
+.estg-table th.estg-col-_status { min-width: 7em; }
+.estg-table th.estg-col-_date { min-width: 6.5em; }
+.estg-table img, .estg-table iframe, .estg-table video { max-width: 100%; height: auto; }
+.estg-table .estg-pill { white-space: normal; }
+.estg-table tbody tr:nth-child(even) { background: var(--estg-bg-alt); }
+.estg-sort { color: inherit; text-decoration: none; }
+.estg-sort.is-active { color: var(--estg-accent); }
+.estg-nowrap { white-space: nowrap; }
+.estg-table.estg-fixed { table-layout: fixed; }
+.estg-table.estg-fixed .estg-nowrap { white-space: normal; }
+.estg-pill { --estg-pill: var(--estg-muted); display: inline-block; padding: .1em .6em; border-radius: 999px; font-size: .85em; font-weight: 600; color: var(--estg-pill); background: color-mix(in srgb, var(--estg-pill) 12%, transparent); border: 1px solid color-mix(in srgb, var(--estg-pill) 35%, transparent); }
+
+/* Footer */
+.estg-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .6em; margin-top: 1em; }
+.estg-total { color: var(--estg-muted); }
+.estg-pages { display: flex; flex-wrap: wrap; gap: .3em; }
+.estg-page { display: inline-block; min-width: 2.2em; padding: .3em .5em; text-align: center; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); text-decoration: none; color: inherit; }
+.estg-page.is-active { background: var(--estg-accent); border-color: var(--estg-accent); color: #fff; }
+.estg-gap { padding: .3em; color: var(--estg-muted); }
+.estg-empty { color: var(--estg-muted); }
+
+/* Entry view */
+.estg-detail { display: grid; grid-template-columns: minmax(8em, 30%) 1fr; gap: 0; margin: 0; border-top: 1px solid var(--estg-border); }
+.estg-detail dt, .estg-detail dd { margin: 0; padding: .55em .7em; border-bottom: 1px solid var(--estg-border); }
+.estg-detail dt { font-weight: 600; background: var(--estg-bg-alt); }
+
+/* Mobile: every row becomes a card, each cell shows its column label. */
+@media (max-width: 700px) {
+	.estg-scroll { overflow: visible; }
+	.estg-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+	.estg-table colgroup { display: none; }
+	.estg-table, .estg-table tbody, .estg-table tr, .estg-table td { display: block; width: 100% !important; }
+	.estg-table tr { margin: 0 0 .8em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: #fff; }
+	.estg-table tbody tr:nth-child(even) { background: #fff; }
+	.estg-table td { display: flex; gap: .8em; justify-content: space-between; border-bottom: 1px solid var(--estg-border); text-align: right; white-space: normal; }
+	.estg-table td:last-child { border-bottom: 0; }
+	.estg-table td[data-label]::before { content: attr(data-label); font-weight: 600; text-align: left; flex: 0 0 40%; }
+	.estg-table td.estg-check { justify-content: flex-start; text-align: left; }
+	.estg-table td.estg-actions { flex-wrap: wrap; justify-content: flex-start; gap: .5em 1.2em; background: var(--estg-bg-alt); }
+	.estg-table td.estg-actions::before { display: none; }
+	.estg-actions > * + * { margin-left: 0; }
+	.estg-tools { margin-left: 0; width: 100%; }
+	.estg-field { flex: 1 1 45%; }
+	.estg-detail { grid-template-columns: 1fr; }
+	.estg-detail dt { border-bottom: 0; }
+}
+
+/* Same card layout on wider screens when the table cannot fit its container (set by front.js). */
+.estg.estg-cards .estg-scroll { overflow: visible; }
+.estg.estg-cards .estg-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.estg.estg-cards .estg-table colgroup { display: none; }
+.estg.estg-cards .estg-table, .estg.estg-cards .estg-table tbody, .estg.estg-cards .estg-table tr, .estg.estg-cards .estg-table td { display: block; width: 100% !important; }
+.estg.estg-cards .estg-table tr { margin: 0 0 .8em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: #fff; }
+.estg.estg-cards .estg-table tbody tr:nth-child(even) { background: #fff; }
+.estg.estg-cards .estg-table td { display: flex; gap: .8em; justify-content: space-between; border-bottom: 1px solid var(--estg-border); text-align: right; white-space: normal; }
+.estg.estg-cards .estg-table td:last-child { border-bottom: 0; }
+.estg.estg-cards .estg-table td[data-label]::before { content: attr(data-label); font-weight: 600; text-align: left; flex: 0 0 40%; }
+.estg.estg-cards .estg-table td.estg-check { justify-content: flex-start; text-align: left; }
+.estg.estg-cards .estg-table td.estg-actions { flex-wrap: wrap; justify-content: flex-start; gap: .5em 1.2em; background: var(--estg-bg-alt); }
+.estg.estg-cards .estg-table td.estg-actions::before { display: none; }
+.estg.estg-cards .estg-actions > * + * { margin-left: 0; }
+
+/* Files and thumbnails */
+.estg { --estg-thumb: 48px; }
+.estg.estg-thumbs-96 { --estg-thumb: 96px; }
+.estg-files { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35em; }
+.estg-files-name, .estg-files-default { flex-direction: column; align-items: flex-start; }
+.estg-thumb { display: inline-block; line-height: 0; border-radius: var(--estg-radius); }
+.estg-thumb img, .estg-table .estg-thumb img { width: var(--estg-thumb); height: var(--estg-thumb); max-width: none; object-fit: cover; border-radius: var(--estg-radius); background: var(--estg-bg-alt); border: 1px solid var(--estg-border); }
+.estg-more-files { color: var(--estg-muted); font-size: .85em; }
+.estg-file { display: inline-flex; align-items: center; gap: .3em; color: var(--estg-accent); overflow-wrap: anywhere; }
+.estg-signature { height: var(--estg-thumb); width: auto; max-width: 100%; background: #fff; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); }
+.estg-download { white-space: nowrap; }
+
+/* More details */
+.estg-expand { display: flex; justify-content: flex-end; margin: 0 0 .6em; }
+.estg-table tr.estg-has-more { cursor: pointer; }
+.estg-table tr.estg-has-more:hover { background: color-mix(in srgb, var(--estg-accent) 5%, transparent); }
+.estg-table tr.estg-has-more.is-open, .estg-table tr.estg-more-row { background: var(--estg-bg-alt); }
+.estg-table tr.estg-has-more.is-open td { border-bottom-color: transparent; }
+.estg-more-cell { width: 3em; text-align: right; vertical-align: middle; }
+.estg-more { display: inline-flex; align-items: center; justify-content: center; width: 2.2em; height: 2.2em; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--estg-muted); cursor: pointer; }
+.estg-more:hover, .estg-more:focus-visible { background: color-mix(in srgb, var(--estg-accent) 12%, transparent); color: var(--estg-accent); }
+.estg-more .estg-icon { transition: transform .15s; }
+.estg-more[aria-expanded="true"] .estg-icon { transform: rotate(180deg); }
+.estg-more-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.estg-more-row > td { padding: .2em .7em 1em; }
+.estg-more-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(14em, 1fr)); gap: .8em 1.6em; margin: 0; }
+.estg-more-item { min-width: 0; }
+.estg-more-item dt { margin: 0 0 .2em; font-size: .8em; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--estg-muted); }
+.estg-more-item dd { margin: 0; overflow-wrap: anywhere; }
+.estg-muted { color: var(--estg-muted); }
+
+@media (max-width: 700px) {
+	.estg-table td.estg-more-cell { justify-content: center; background: var(--estg-bg-alt); text-align: center; }
+	.estg-table td.estg-more-cell .estg-more { width: auto; padding: 0 1em; border-radius: var(--estg-radius); gap: .4em; }
+	.estg-table td.estg-more-cell .estg-more-text { position: static; width: auto; height: auto; clip: auto; }
+	.estg-table tr.estg-more-row { margin-top: -.8em; border-top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+	.estg-table tr.estg-more-row > td { display: block; text-align: left; }
+}
+.estg.estg-cards .estg-table td.estg-more-cell { justify-content: center; background: var(--estg-bg-alt); text-align: center; }
+.estg.estg-cards .estg-table td.estg-more-cell .estg-more { width: auto; padding: 0 1em; border-radius: var(--estg-radius); gap: .4em; }
+.estg.estg-cards .estg-table td.estg-more-cell .estg-more-text { position: static; width: auto; height: auto; clip: auto; }
+.estg.estg-cards .estg-table tr.estg-more-row > td { display: block; text-align: left; }
+.estg-table tr[hidden] { display: none !important; }
+.estg-table tbody tr.estg-has-more:nth-child(4n+3) { background: var(--estg-bg-alt); }
+.estg-table tbody tr.estg-more-row:nth-child(even) { background: var(--estg-bg-alt); }
+.estg.estg-cards .estg-table tr.estg-has-more.is-open { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.estg.estg-cards .estg-table tr.estg-more-row { border-top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+@media (max-width: 700px) {
+	.estg-table tr.estg-has-more.is-open { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+	.estg-table tr.estg-more-row { margin-top: 0; }
+}
+.estg-tab.is-static { border-style: dashed; color: var(--estg-muted); cursor: default; }
+
+/* buttons keep the EntryStage look whatever the theme does to <button> (background, capitals, padding, shadow),
+   even when the theme forces its own with !important. To change them in your own CSS, use the same selectors
+   with !important. */
+.estg .estg-table button.estg-act, .estg .estg-table a.estg-act,
+.estg .estg-table button.estg-more { margin: 0 !important; min-width: 0 !important; min-height: 0 !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; font: inherit !important; line-height: 1 !important; text-shadow: none !important; }
+.estg .estg-table button.estg-act, .estg .estg-table a.estg-act { padding: .35em !important; border: 1px solid var(--estg-border) !important; border-radius: var(--estg-radius) !important; background: transparent !important; color: var(--estg-accent) !important; }
+.estg .estg-table button.estg-act:hover, .estg .estg-table button.estg-act:focus-visible,
+.estg .estg-table a.estg-act:hover, .estg .estg-table a.estg-act:focus-visible { border-color: var(--estg-accent) !important; background: color-mix(in srgb, var(--estg-accent) 10%, transparent) !important; color: var(--estg-accent) !important; }
+.estg .estg-table button.estg-act-archive:hover, .estg .estg-table button.estg-act-archive:focus-visible { border-color: var(--estg-danger) !important; background: color-mix(in srgb, var(--estg-danger) 8%, transparent) !important; color: var(--estg-danger) !important; }
+.estg .estg-table button.estg-more { width: 2.2em !important; height: 2.2em !important; padding: 0 !important; border: 0 !important; border-radius: 50% !important; background: transparent !important; color: var(--estg-muted) !important; }
+.estg .estg-table button.estg-more:hover, .estg .estg-table button.estg-more:focus-visible { background: color-mix(in srgb, var(--estg-accent) 12%, transparent) !important; color: var(--estg-accent) !important; }
+.estg button.estg-btn, .estg a.estg-btn { margin: 0 !important; min-height: 0 !important; padding: .4em .9em !important; border: 1px solid var(--estg-accent) !important; border-radius: var(--estg-radius) !important; background: var(--estg-accent) !important; color: #fff !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; text-shadow: none !important; font: inherit !important; line-height: 1.4 !important; }
+.estg button.estg-btn:hover, .estg button.estg-btn:focus, .estg a.estg-btn:hover, .estg a.estg-btn:focus { background: var(--estg-accent) !important; color: #fff !important; filter: brightness(.92) !important; }
+.estg button.estg-btn-ghost, .estg a.estg-btn-ghost, .estg button.estg-btn-ghost:hover, .estg a.estg-btn-ghost:hover { background: transparent !important; color: var(--estg-accent) !important; filter: none !important; }
+.estg button.estg-btn-ghost:hover, .estg a.estg-btn-ghost:hover { background: color-mix(in srgb, var(--estg-accent) 8%, transparent) !important; }
+.estg button.estg-btn-small, .estg a.estg-btn-small { padding: .15em .5em !important; font-size: .85em !important; }
+
+/* status above the actions. */
+.estg-status { margin: 0 0 .4em; line-height: 1.4; }
+.estg-act-row { display: flex; flex-wrap: wrap; gap: .3em; line-height: 1; }
+.estg-act-row > * + * { margin-left: 0; }
+.estg.estg-cards .estg-table td.estg-actions { flex-direction: column; align-items: flex-start; }
+@media (max-width: 700px) { .estg-table td.estg-actions { flex-direction: column; align-items: flex-start; } }
+.estg.estg-cards .estg-table td.estg-more-cell .estg-more, .estg.estg-cards .estg-table button.estg-more { width: auto !important; padding: 0 1em !important; border-radius: var(--estg-radius) !important; }
+@media (max-width: 700px) { .estg .estg-table td.estg-more-cell button.estg-more { width: auto !important; padding: 0 1em !important; border-radius: var(--estg-radius) !important; } }
+
+/* top of the list. The search fields and their "Filter" button sit in one box; export on the right. */
+.estg .estg-toolbar { display: flex; flex-wrap: wrap; align-items: stretch; gap: .8em; margin: 0 0 1em; }
+.estg-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .6em .8em; flex: 1 1 auto; padding: .7em .8em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: var(--estg-bg-alt); }
+.estg-filters.is-active { border-color: color-mix(in srgb, var(--estg-accent) 45%, var(--estg-border)); }
+.estg-field-search { flex: 1 1 12em; }
+.estg-field-search input { width: 100%; }
+.estg-field-date input { width: 10em; }
+.estg-filter-go { display: flex; align-items: center; gap: .8em; min-height: 2.2em; }
+.estg .estg-toolbar .estg-tools { margin-left: auto; align-self: flex-end; }
+.estg .estg-toolbar .estg-btn .estg-icon { width: 1.1em; height: 1.1em; }
+/* Bulk actions just above the table, with the number of checked rows. */
+.estg .estg-bulk { display: flex; flex-wrap: wrap; align-items: center; gap: .5em .7em; margin: 0 0 .6em; padding: .4em .6em; border-left: 3px solid var(--estg-border); }
+.estg .estg-bulk .estg-selected { color: var(--estg-muted); font-size: .9em; min-width: 9em; }
+.estg .estg-bulk .estg-selected.is-on { color: var(--estg-accent); font-weight: 600; }
+.estg .estg-bulk:has(.estg-selected.is-on) { border-left-color: var(--estg-accent); }
+.estg .estg-bulk select { min-height: 2em; padding: .2em .4em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); }
+.estg button.estg-btn:disabled { opacity: .45 !important; cursor: not-allowed !important; filter: none !important; }
+/* Rows per page, next to the pagination. */
+.estg-footer { display: flex; flex-wrap: wrap; align-items: center; gap: .6em 1.2em; }
+.estg-perpage { display: flex; align-items: center; gap: .4em; margin: 0 0 0 auto; color: var(--estg-muted); font-size: .9em; }
+.estg-perpage select { min-height: 2em; padding: .15em .4em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); }
+/* Pictures chosen as icons. */
+.estg img.estg-icon-img { width: 18px; height: 18px; object-fit: contain; vertical-align: -.2em; }
+/* Actions at most 25 % wide: buttons wrap. */
+.estg .estg-table th.estg-actions-col { max-width: 25%; }
+.estg .estg-table .estg-act { white-space: normal; text-align: left; }
+@media (max-width: 700px) { .estg-perpage { margin-left: 0; } .estg .estg-toolbar .estg-tools { margin-left: 0; } }
+.estg button.estg-nojs[hidden], .estg .estg-act[hidden] { display: none; }
+
+/* Printable list (Print button) and printing a list page. */
+.estg-print-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .8em; margin: 0 0 1em; }
+.estg-print-title { display: none; margin: 0 0 .2em; }   /* on paper only: on screen the page has its own title. */
+.estg-print-info { margin: 0 0 1em; color: var(--estg-muted); font-size: .9em; }
+.estg-print-table { width: 100%; }
+@media print {
+	/* the printable page shows the list only, not the header, menus and footer of the theme. */
+	body:has(.estg-print) * { visibility: hidden; }
+	body:has(.estg-print) .estg-print, body:has(.estg-print) .estg-print * { visibility: visible; }
+	.estg-print { position: absolute; left: 0; top: 0; width: 100%; }
+	.estg-print-title { display: block; }
+	.estg-print-bar, .estg-toolbar, .estg-tabs, .estg-bulk, .estg-check, .estg-actions, .estg-actions-col, .estg-more-cell, .estg-more-col, .estg-footer .estg-pages, .estg-perpage, .estg-notice { display: none !important; }
+	.estg-table { border-collapse: collapse; font-size: 10pt; }
+	.estg-table th, .estg-table td { border: 1px solid #999; padding: 4px 6px; color: #000; background: #fff; }
+	.estg-table tr { break-inside: avoid; }
+	.estg-table thead { display: table-header-group; }
+	.estg-thumb img { width: 40px; height: 40px; }
+	.estg a { color: #000; text-decoration: none; }
+}

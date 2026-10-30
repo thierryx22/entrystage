@@ -1,0 +1,9 @@
+# Fichiers du dépôt GitHub à ne pas envoyer dans l'extension sur WordPress.org
+/.git
+/.github
+/.wordpress-org
+.distignore
+.gitignore
+.gitattributes
+README.md
+.DS_Store

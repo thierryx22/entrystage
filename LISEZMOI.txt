@@ -1,0 +1,266 @@
+=== EntryStage ===
+Mots-clés : gravity forms, entrées, site, liste, modification
+Nécessite au moins : WordPress 6.2
+Nécessite PHP : 7.4
+Version stable : 1.0.0
+Licence : GPLv2 ou ultérieure
+URI de la licence : https://www.gnu.org/licenses/gpl-2.0.html
+
+Affichez les entrées Gravity Forms sur votre site dans une liste adaptée au mobile : vos utilisateurs consultent, modifient, dupliquent et archivent leurs propres entrées.
+
+== Description ==
+
+EntryStage est une extension complémentaire de Gravity Forms. Elle affiche les entrées d'un formulaire sur n'importe quelle page de votre site, dans un tableau qui se transforme en fiches empilées sur téléphone.
+
+Tout se règle dans Gravity Forms, dans un onglet de réglages par formulaire présenté comme un atelier, étape par étape. Aucun code n'est nécessaire.
+
+**Pour les personnes qui remplissent vos formulaires**
+
+* Voir les entrées qu'elles ont envoyées, triées et réparties en pages, avec les vignettes des images et les liens des fichiers.
+* Ouvrir une entrée pour la lire.
+* Modifier une entrée dans le formulaire d'origine : le formulaire s'ouvre déjà rempli et les changements sont enregistrés dans la même entrée.
+* Dupliquer une entrée : le formulaire s'ouvre rempli et une nouvelle entrée est créée.
+* Archiver une entrée (placée dans la corbeille de Gravity Forms, ou supprimée définitivement si vous le préférez).
+* Rechercher dans la liste.
+
+**Pour vous**
+
+* Choisir les colonnes, leur ordre, leur largeur et leur affichage, et qui voit la liste : tout le monde, les utilisateurs connectés ou certains rôles ; leurs propres entrées ou toutes les entrées.
+* Une page « Mes entrées » avec le code court `[entrystage form="12" user="current"]`.
+* Un bloc « Liste EntryStage » pour l'éditeur de blocs, avec aperçu, en plus du code court.
+* Un espace personnel : plusieurs formulaires sur une page, un onglet par formulaire avec son nombre d'entrées, avec `[entrystage forms="12,15" user="current"]`.
+* Un bouton Imprimer : une page propre à imprimer, avec les entrées qui répondent aux filtres.
+* Trois apparences : le style EntryStage avec vos couleurs, un style minimal qui reprend l'aspect de votre thème, ou aucun style.
+* Protection facultative des liens de fichiers d'un formulaire : seules les personnes qui peuvent voir l'entrée téléchargent ses fichiers.
+
+**EntryStage Pro**
+
+Suivez chaque entrée du début à la fin. Demandes, inscriptions, candidatures, commandes : avec EntryStage Pro, chaque entrée reçoit un statut que vous définissez (par exemple Reçue, En cours, Terminée), affiché en étiquette de couleur. Un clic la fait passer à l'étape suivante, un onglet par statut compte ce qui attend à chaque étape, et chaque changement est inscrit dans les notes de l'entrée. Votre équipe voit d'un coup d'œil ce qu'il reste à faire.
+
+Également inclus : Plus de détails sous chaque ligne, actions groupées, export CSV, filtres déroulants et par dates, liens PDF avec Gravity PDF, icônes personnalisées, conditions du code court et support prioritaire.
+EntryStage Pro sera bientôt disponible. Elle remplacera cette extension en gardant tous vos réglages.
+
+**Prérequis**
+
+* WordPress 6.2 ou plus récent, PHP 7.4 ou plus récent.
+* Gravity Forms 2.5 ou plus récent (vendu séparément par Rocketgenius).
+
+== Installation ==
+
+1. Dans WordPress, allez dans Extensions > Ajouter, cherchez EntryStage, puis cliquez sur Installer maintenant et Activer. Gravity Forms doit être installé et activé.
+
+Ensuite, pour chaque formulaire :
+
+1. Ouvrez le formulaire, puis Réglages > EntryStage.
+2. Cochez « Activer la liste des entrées pour ce formulaire ».
+3. Accès : choisissez qui voit la liste, quelles entrées sont affichées, les gestionnaires et la page où le formulaire est affiché. Les boutons Modifier et Dupliquer ouvrent l'entrée sur cette page. Sur « Automatique », c'est la première page qui affiche le formulaire (code court ou bloc Gravity Forms) qui est utilisée ; si aucune n'est trouvée, Modifier et Dupliquer sont masqués et les gestionnaires de la liste voient un message qui l'explique.
+4. Colonnes : ajoutez des champs en colonne, ordonnez-les et choisissez l'affichage de chacun.
+5. Actions et Affichage : les autres réglages, étape par étape. L'étape Code court compose le code court avec ses options et donne des exemples tirés du formulaire. Chaque étape indique « Prêt », « À vérifier » ou « Facultatif ».
+6. Enregistrez, puis ouvrez la page de la liste (lien « Voir la page » en haut de l'onglet) pour la voir avec votre thème.
+7. Ajoutez le bloc « Liste EntryStage » sur la page de votre choix et choisissez le formulaire dans les réglages du bloc, ou ajoutez le code court `[entrystage form="12"]` (remplacez 12 par le numéro de votre formulaire). Le code court est rappelé en haut de l'onglet de réglages.
+
+== Utiliser la liste ==
+
+= Colonnes =
+
+Les colonnes se choisissent dans formulaire > Réglages > EntryStage, étape Colonnes, en deux zones : les champs disponibles et les colonnes de la liste. Chaque champ a des boutons pour l'ajouter en colonne, le monter ou le descendre et le retirer. Tous les boutons s'utilisent au clavier.
+
+Pour chaque colonne : un libellé (vide : le libellé du champ), un mode d'affichage (proposé seulement quand le champ peut s'afficher de plusieurs façons), une largeur (par exemple 120px ou 15 % ; vide : automatique) et « Triable ».
+Un interrupteur inutilisable est grisé, avec la raison.
+Date est aussi une colonne : on peut la déplacer ou la retirer.
+Actions est toujours la dernière. Sur téléphone, chaque ligne devient une fiche et les largeurs sont ignorées.
+
+Les premières versions de test choisissaient les colonnes dans l'éditeur de formulaire (onglet Apparence de chaque champ). Cette option a quitté l'éditeur : les colonnes choisies là sont reprises telles quelles, avec leur ordre et leur largeur, jusqu'au premier enregistrement de la page de réglages.
+
+
+= Images et fichiers =
+
+Modes d'affichage d'un champ Envoi de fichiers :
+
+* Nom du fichier (lien), par défaut : un lien par fichier.
+* Vignette (images) : les fichiers JPG, PNG, GIF et WebP s'affichent en vignette carrée de 48 ou 96 pixels (étape Affichage) ; un clic ouvre l'image. Les autres fichiers s'affichent en lien. Avec plusieurs images, 3 vignettes sont affichées, puis « +N ».
+* Bouton Télécharger : un bouton qui télécharge le fichier.
+* Les noms des modes disent ce qui est montré. Pour un champ à choix (liste déroulante, boutons radio, cases à cocher) : « Libellé du choix » (le texte vu par la personne qui remplit le formulaire, par exemple « Atelier 6 ») ou « Valeur enregistrée du choix » (la valeur cachée du choix, par exemple « 6 ») ; un exemple tiré du premier choix est affiché sous le menu. Pour un champ Nom ou Adresse : « Champ complet » ou « Seulement : … » une partie. Pour les autres champs : « Valeur saisie ».
+
+Règles et limites :
+
+* Les liens passent toujours par l'adresse de téléchargement de Gravity Forms, jamais par l'emplacement réel du fichier.
+* Les vignettes chargent l'image d'origine (Gravity Forms ne garde pas de copie réduite) : gardez 25 lignes par page au plus quand une colonne affiche des images.
+* « Téléchargements réservés aux personnes qui voient l'entrée » (étape Affichage, désactivé par défaut) : les liens de téléchargement du formulaire demandent alors un utilisateur connecté qui voit l'entrée dans la liste, ou qui peut voir les entrées dans l'administration. Gravity Forms donne l'entrée à vérifier à partir de la version 2.9.28.1 ; avec une version plus ancienne, le contrôle s'arrête à « connecté et autorisé à voir la liste ». Les liens de fichiers des notifications ne s'ouvrent plus pour un destinataire non connecté, et les visiteurs d'une liste publique ne voient plus les vignettes. L'adresse réelle d'un fichier (affichée dans l'administration) n'est pas couverte : elle reste telle que Gravity Forms la crée.
+* Champs Signature (module Signature de Gravity Forms) : vignette quand le module fournit l'adresse de l'image de la signature ; sinon affichage comme dans Gravity Forms.
+
+= Types de champs =
+
+* Non proposés : HTML, Section, Saut de page, CAPTCHA (pas de valeur), Mot de passe et Carte bancaire (jamais affichés).
+* Nom et Adresse : en entier, ou une seule partie (par exemple le nom de famille ou la ville). Le tri demande de choisir une partie.
+* Liste déroulante et Boutons radio : libellé du choix (par défaut) ou valeur enregistrée ; triables.
+* Cases à cocher et Sélection multiple : libellés ou valeurs enregistrées ; non triables.
+* Paragraphe : en entier, ou le début du texte (120 caractères).
+* Envoi de fichiers : voir Images et fichiers ; non triable.
+* Liste, Consentement, Signature, Image d'article, Catégorie, Étiquettes, Champ personnalisé d'article : non triables.
+* Nombre, Date, Heure, Téléphone, E-mail, Site web, Caché, Texte sur une ligne, calculs et champs de prix : affichés comme dans Gravity Forms ; triables (les nombres sont triés comme des nombres).
+* Champs d'autres modules : affichés comme dans Gravity Forms.
+* Les champs administratifs et masqués peuvent être affichés ; les réglages avertissent que toute personne qui voit la liste les verra.
+
+= Bloc =
+
+Dans l'éditeur de blocs, ajoutez le bloc « Liste EntryStage » (catégorie Widgets, ou tapez « EntryStage »). Dans les réglages du bloc, choisissez :
+
+* Formulaire : les formulaires dont la liste n'est pas activée sont signalés ; activez-la dans les réglages du formulaire, onglet EntryStage.
+* Entrées affichées : comme réglé dans le formulaire (étape Accès), seulement les entrées de la personne connectée, ou seulement les entrées d'un utilisateur (identifiant).
+* Plusieurs formulaires, en onglets : un espace personnel ; cochez les formulaires à afficher.
+* Lignes par page : vide pour garder le réglage du formulaire.
+* Page du formulaire (pour Modifier et Dupliquer) : numéro, chemin ou adresse d'une page ; vide pour garder le réglage du formulaire.
+
+L'éditeur affiche un aperçu de la liste ; ses boutons et liens ne fonctionnent que sur le site. Les colonnes, les boutons et l'apparence viennent des réglages du formulaire, comme pour le code court. Le bloc et le code court donnent la même liste : utilisez l'un ou l'autre.
+
+= Options du code court =
+
+`[entrystage form="12"]` affiche la liste du formulaire 12. Des options permettent de n'afficher qu'une partie des entrées ; les visiteurs ne peuvent pas les modifier :
+
+* `user="5"` : seulement les entrées créées par l'utilisateur n°5. `user="current"` : seulement les entrées de la personne connectée.
+* `page="contact/mon-formulaire"` : Modifier et Dupliquer rouvrent le formulaire Gravity Forms rempli avec l'entrée ; il leur faut donc une page qui affiche ce formulaire. Par défaut, c'est la page choisie à l'étape Accès. Cette option en désigne une autre pour cette liste seulement (numéro, chemin ou adresse d'une page de votre site), par exemple une page par agence qui affiche chacune le formulaire.
+* `per_page="50"` : nombre d'entrées par page.
+* `forms="12,15,20"` (à la place de `form`) : espace personnel, voir plus bas.
+
+Exemple : `[entrystage form="12" user="current" per_page="50"]`
+
+Ces options limitent seulement ce que la liste affiche. Les boutons suivent toujours les droits réglés dans le formulaire.
+
+= Espace personnel (plusieurs formulaires) =
+
+`[entrystage forms="12,15,20" user="current"]` affiche plusieurs formulaires sur une page, un onglet par formulaire, par exemple pour une page « Mes demandes ». Chaque onglet indique le nombre d'entrées que la personne peut voir et contient la liste de ce formulaire, exactement comme réglée dans ses réglages : colonnes, boutons, recherche, tri et pages. La recherche, le tri et les boutons restent dans l'onglet utilisé.
+
+* Seuls les formulaires dont la liste est activée et que la personne a le droit de voir ont un onglet ; s'il n'en reste qu'un, aucun onglet n'est affiché.
+* `user` et `per_page` s'appliquent à tous les onglets. `page` n'est pas utilisé ici : chaque formulaire ouvre Modifier et Dupliquer sur sa propre page.
+* L'ordre des onglets est celui des numéros dans `forms` ; 20 formulaires au plus.
+* Dans l'éditeur de blocs : bloc « Liste EntryStage », interrupteur « Plusieurs formulaires, en onglets », puis cochez les formulaires.
+
+= Qui voit quoi =
+
+* Qui peut voir la liste : tout le monde, les utilisateurs connectés uniquement, ou les utilisateurs de certains rôles (la liste des rôles apparaît quand ce choix est sélectionné).
+* Entrées affichées : seulement les entrées créées par l'utilisateur, ou toutes les entrées.
+* Chaque utilisateur peut modifier, dupliquer et archiver ses propres entrées uniquement. Avec « Toutes les entrées », il peut aussi voir les autres entrées.
+* Les gestionnaires de la liste voient toutes les entrées et utilisent tous les boutons activés sur toutes les entrées. Les administrateurs et les utilisateurs qui peuvent modifier les entrées Gravity Forms sont toujours gestionnaires ; vous pouvez ajouter d'autres rôles.
+
+= Tri et pages =
+
+Cliquez sur le titre d'une colonne pour trier ; cliquez de nouveau pour inverser. Le tri initial, son sens et le nombre d'entrées par page se choisissent dans les réglages. Les visiteurs peuvent changer le nombre d'entrées par page (10, 25, 50 ou 100) en bas de la liste, à côté de la pagination.
+
+= Imprimer =
+
+Activez « Bouton Imprimer » dans les réglages du formulaire (étape Affichage, Outils au-dessus de la liste). Le bouton ouvre une page à imprimer avec les entrées qui répondent à la recherche et aux filtres, toutes pages comprises (500 au plus), dans l'ordre de la liste, sans boutons ; la fenêtre d'impression du navigateur s'ouvre d'elle-même. La page indique le titre de la page, la date d'impression, le nombre d'entrées et la recherche utilisée. Sur papier, seule la liste est imprimée, sans l'en-tête, les menus ni le pied de page du thème.
+
+Imprimer une page ordinaire de la liste (Ctrl+P) laisse aussi de côté les boutons, la recherche et la pagination.
+
+= Modifier une entrée =
+
+Le bouton Modifier ouvre la page du formulaire avec l'entrée déjà remplie. Un bandeau rappelle l'entrée en cours de modification, avec un lien Annuler. À l'envoi du formulaire, la même entrée est mise à jour, une note est ajoutée à l'entrée et l'utilisateur revient à la liste (ou voit la confirmation du formulaire, selon les réglages).
+
+* Fichiers : un champ de téléversement indique le fichier actuel. Si l'utilisateur n'en ajoute pas de nouveau, le fichier actuel est conservé.
+* Les champs qui doivent être uniques (« Pas de doublons ») ne tiennent pas compte de l'entrée en cours de modification.
+* Notifications : choisissez si elles sont renvoyées après une modification.
+* Les champs administratifs conservent leur valeur.
+
+= Dupliquer une entrée =
+
+Le bouton Dupliquer ouvre le formulaire rempli avec les valeurs de l'entrée. L'envoi crée une nouvelle entrée qui appartient à l'utilisateur. Les champs de téléversement sont vides.
+
+= Archiver une entrée =
+
+Par défaut, Archiver place l'entrée dans la corbeille de Gravity Forms, d'où un administrateur peut la restaurer. Vous pouvez choisir la suppression définitive à la place. Une question de confirmation est posée avant d'archiver ; laissez la question vide pour la supprimer.
+
+
+= Recherche =
+
+* Champ de recherche : trouve les entrées dont un champ contient le texte saisi.
+
+= Langue =
+
+L'extension est traduite sur translate.wordpress.org : son interface s'affiche dans la langue de WordPress (ou celle de votre profil) quand une traduction existe pour cette langue, en anglais sinon. Les libellés que vous saisissez ou enregistrez dans les réglages d'un formulaire restent tels qu'enregistrés.
+
+= Apparence =
+
+La colonne Actions ne prend jamais plus de 25 % de la largeur du tableau ; avec des libellés, ses boutons passent sur plusieurs lignes.
+
+Boutons : dans les réglages de chaque formulaire, choisissez si les boutons d'action affichent des icônes (le libellé apparaît quand le pointeur s'arrête sur l'icône et il est lu par les lecteurs d'écran), des icônes et des libellés, ou seulement des libellés.
+
+Sans code, dans Formulaires > Réglages > EntryStage > Apparence (pour toutes les listes du site) :
+
+* Style des listes :
+  * EntryStage : l'aspect de l'extension, avec les couleurs choisies en dessous ;
+  * Minimal : la mise en page seulement (colonnes, fiches sur téléphone, largeurs, colonne Actions limitée à 25 %) ; les couleurs, les boutons et les polices viennent de votre thème, les lignes prennent une teinte neutre tirée de la couleur du texte ;
+  * Aucun : pas de feuille de style ; vous habillez la liste entièrement depuis votre thème.
+  Un site qui avait décoché l'ancienne case « Utiliser la feuille de style de l'extension » passe sur « Aucun ».
+* Couleurs (style EntryStage) : couleur principale, lignes, fond d'une ligne sur deux, texte secondaire, Archiver et erreurs. Chaque sélecteur a un bouton pour revenir à la couleur d'origine.
+* Arrondi des angles (style EntryStage) : de 0 (angles droits) à 24 pixels.
+
+Pour aller plus loin, ajoutez du CSS dans votre thème (Apparence > Personnaliser > CSS additionnel). Ce CSS est chargé après celui de l'extension : à sélecteur égal, c'est votre règle qui s'applique (pour les boutons, ajoutez !important, voir plus bas).
+
+1. Variables CSS (couleurs et arrondis)
+
+Elles se règlent sur `.estg` (toutes les listes) ou sur `#estg-1` (la liste du formulaire n° 1) :
+
+`.estg { --estg-accent: #7d6b3f; --estg-radius: 0; }`
+
+* `--estg-accent` : couleur principale (boutons, liens, icônes, onglet et page actifs).
+* `--estg-border` : bordures (tableau, boutons d'action, champs).
+* `--estg-muted` : textes secondaires (compteurs, libellés, chevron).
+* `--estg-bg-alt` : fond d'une ligne sur deux et des lignes ouvertes.
+* `--estg-danger` : rouge d'Archiver au survol et des messages d'erreur.
+* `--estg-radius` : arrondi des angles.
+* `--estg-thumb` : taille des miniatures (48 px, ou 96 px selon le réglage).
+
+2. Classes stables
+
+Elles commencent toutes par `estg-` et ne changeront pas d'une version à l'autre.
+
+* Liste : `.estg` (toute la liste), `#estg-N` (liste du formulaire N), `.estg-cards` (ajoutée quand les lignes sont affichées en fiches).
+* Barre d'outils : `.estg-toolbar` (recherche et filtres), `.estg-field`.
+* Tableau : `.estg-table`, `.estg-row` (une ligne), `.estg-col-CLE` (une colonne : `.estg-col-_date`, ou `.estg-col-8` pour le champ n° 8).
+* Actions : `.estg-actions` (cellule), `.estg-act-row` (ligne d'icônes), `.estg-act` (chaque bouton), puis `.estg-act-view`, `.estg-act-edit`, `.estg-act-duplicate`, `.estg-act-archive`. `.estg-icon` (icônes).
+* Fichiers : `.estg-thumb` (miniature), `.estg-file` (lien vers un fichier).
+* Autres : `.estg-btn` (bouton Filtrer), `.estg-pages` (pagination), `.estg-detail` (fiche d'une entrée), `.estg-editing` (bandeau au-dessus d'un formulaire en cours de modification), `.estg-notice` (messages).
+
+Les boutons de la liste (style EntryStage) sont protégés contre les styles que certains thèmes donnent à tous les boutons (fond, majuscules, marges), même quand le thème utilise !important. Pour les modifier, reprenez la même forme de sélecteur et ajoutez !important :
+
+`.estg .estg-table button.estg-act, .estg .estg-table a.estg-act { border-radius: 50% !important; }`
+
+`#estg-1 .estg-act-archive:hover { color: #000 !important; }`
+
+
+Pour changer le dessin d'une icône, utilisez le filtre `estg_icon` (voir la section « For developers » de DOCUMENTATION.txt).
+
+La liste ne défile jamais horizontalement : les valeurs longues passent à la ligne, un mot trop long pour sa colonne est coupé avec un trait d'union selon la langue du site (le navigateur doit connaître les règles de coupure de cette langue ; sinon le mot est coupé sans trait d'union) et, quand les colonnes ne tiennent pas dans la largeur disponible (moins de 700 pixels, ou beaucoup de colonnes), chaque ligne devient une fiche.
+
+== Questions fréquentes ==
+
+= Qu'apporte EntryStage Pro ? =
+
+Avant tout, le suivi des entrées étape par étape : des statuts à vous avec étiquettes de couleur, un bouton « étape suivante », un onglet par statut avec son compteur, et l'historique des changements dans les notes de chaque entrée. Également Plus de détails, actions groupées, export CSV, filtres déroulants et par dates, liens PDF, icônes personnalisées, conditions du code court et support prioritaire.
+EntryStage Pro sera bientôt disponible. Elle remplacera cette extension : quand elle sera activée, cette extension sera désactivée et tous les réglages conservés.
+
+= Peut-on afficher plusieurs listes sur la même page ? =
+
+Oui, des listes de formulaires différents. Le tri, les pages et les filtres ne s'appliquent qu'à la liste utilisée.
+
+= Un utilisateur peut-il modifier les entrées des autres ? =
+
+Non, sauf s'il est gestionnaire de la liste.
+
+= Les paiements sont-ils recalculés quand une entrée est modifiée ? =
+
+Non. La modification met à jour les valeurs des champs uniquement. Les paiements, abonnements et flux des extensions de paiement ne sont pas relancés.
+
+= Mes données sont-elles envoyées quelque part ? =
+
+Non. EntryStage ne contacte aucun serveur extérieur : aucune donnée, aucune statistique, aucune entrée ne quitte votre site. Ses scripts et styles sont tous inclus dans l'extension.
+
+== Pour les développeurs ==
+
+Tous les crochets commencent par `estg_`. La liste complète, avec leurs paramètres, figure dans DOCUMENTATION.txt (section « For developers »).
+
+== Historique des versions ==
+
+= 1.0.0 =
+* Première version publique.
