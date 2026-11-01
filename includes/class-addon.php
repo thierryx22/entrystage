@@ -54,31 +54,63 @@ class Addon extends \GFAddOn {
 	}
 
 	/**
-	 * style of the lists: full (the plugin look), minimal (layout only) or none.
-	 * Sites that had unticked "Use the plugin stylesheet" get "none".
+	 * Styles of the lists: name => label. "minimal" (layout only) and "none" (no stylesheet) come after them.
 	 *
-	 * @return string full | minimal | none.
+	 * @return array
 	 */
-	public function style_mode() {
-		$mode = (string) $this->get_plugin_setting( 'style' );
-		if ( in_array( $mode, array( 'full', 'minimal', 'none' ), true ) ) {
-			return $mode;
-		}
-		return '0' === (string) $this->get_plugin_setting( 'load_css' ) ? 'none' : 'full';
+	public static function skins() {
+		$skins = array(
+			'editorial' => __( 'Editorial template: no frame, headings in small capitals, a strong rule on top of the table, underlined tabs and fields', 'entrystage' ),
+		);
+		return $skins;
 	}
 
 	/**
-	 * Colour settings of the full style: setting => CSS variable.
+	 * Style of the lists: one of skins(), minimal (layout only) or none.
+	 * "full" (the single style of the first versions) is now "editorial"; sites that had unticked
+	 * "Use the plugin stylesheet" get "none".
+	 *
+	 * @return string
+	 */
+	public function style_mode() {
+		$mode = (string) $this->get_plugin_setting( 'style' );
+		if ( array_key_exists( $mode, self::skins() ) || in_array( $mode, array( 'minimal', 'none' ), true ) ) {
+			return $mode;
+		}
+		if ( '' === $mode && '0' === (string) $this->get_plugin_setting( 'load_css' ) ) {
+			return 'none';
+		}
+		return 'editorial';
+	}
+
+	/**
+	 * Fonts offered for the lists: setting => array( label, CSS font-family or '' ). Fonts already installed on the
+	 * visitor's computer only: nothing is loaded from another site.
+	 *
+	 * @return array
+	 */
+	public static function fonts() {
+		return array(
+			''          => array( __( 'Font of the style', 'entrystage' ), '' ),
+			'theme'     => array( __( 'Font of the theme', 'entrystage' ), 'inherit' ),
+			'system'    => array( __( 'System (sans serif)', 'entrystage' ), 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' ),
+			'humanist'  => array( __( 'Humanist (sans serif)', 'entrystage' ), 'Seravek, "Gill Sans Nova", Ubuntu, Calibri, "DejaVu Sans", source-sans-pro, sans-serif' ),
+			'geometric' => array( __( 'Geometric (sans serif)', 'entrystage' ), 'Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif' ),
+			'serif'     => array( __( 'Classic serif', 'entrystage' ), 'Charter, "Bitstream Charter", "Sitka Text", Cambria, serif' ),
+		);
+	}
+
+	/**
+	 * Colour settings of the styles: setting => array( CSS variable, colour saved as default by the first
+	 * versions (ignored), label, help ). Empty: the colour of the chosen style.
 	 *
 	 * @return array
 	 */
 	public static function color_settings() {
 		return array(
-			'accent'      => array( '--estg-accent', '#2563eb', __( 'Main colour', 'entrystage' ), __( 'Buttons, links, icons, current page.', 'entrystage' ) ),
-			'color_border' => array( '--estg-border', '#e5e7eb', __( 'Lines', 'entrystage' ), __( 'Borders of the table, of the buttons and of the fields.', 'entrystage' ) ),
-			'color_alt'   => array( '--estg-bg-alt', '#f9fafb', __( 'Background of every other row', 'entrystage' ), __( 'Also the background of the search box.', 'entrystage' ) ),
-			'color_muted' => array( '--estg-muted', '#6b7280', __( 'Secondary text', 'entrystage' ), __( 'Number of entries, labels of the fields.', 'entrystage' ) ),
-			'color_danger' => array( '--estg-danger', '#b91c1c', __( 'Archive and errors', 'entrystage' ), __( 'Archive button on hover, error messages.', 'entrystage' ) ),
+			'accent'       => array( '--estg-accent', '#2563eb', __( 'Main colour', 'entrystage' ), __( 'Buttons, links, icons, active tab and page. Empty: the colour of the style.', 'entrystage' ) ),
+			'color_bg'     => array( '--estg-bg', '', __( 'Background colour', 'entrystage' ), __( 'Background around the list. Empty: none.', 'entrystage' ) ),
+			'color_border' => array( '--estg-border', '#e5e7eb', __( 'Lines', 'entrystage' ), __( 'Lines of the table, of the cards and of the fields. Empty: the colour of the style.', 'entrystage' ) ),
 		);
 	}
 
@@ -118,6 +150,12 @@ class Addon extends \GFAddOn {
 			return;
 		}
 		wp_enqueue_style( 'estg-front', ENTRYSTAGE_URL . 'assets/css/front.css', array(), self::asset_version( 'assets/css/front.css' ) );
+		$file = 'assets/css/skin-' . $mode . '.css';
+		if ( ! file_exists( ENTRYSTAGE_DIR . $file ) ) {
+			$file = 'assets/css/skin-editorial.css';
+		}
+		wp_enqueue_style( 'estg-skin', ENTRYSTAGE_URL . $file, array( 'estg-front' ), self::asset_version( $file ) );
+		// colours and font chosen in the settings, over those of the style
 		$css = '';
 		foreach ( self::color_settings() as $name => $color ) {
 			$value = sanitize_hex_color( (string) $this->get_plugin_setting( $name ) );
@@ -125,12 +163,16 @@ class Addon extends \GFAddOn {
 				$css .= $color[0] . ':' . $value . ';';
 			}
 		}
-		$radius = (string) $this->get_plugin_setting( 'radius' );
-		if ( '' !== $radius && is_numeric( $radius ) ) {
-			$css .= '--estg-radius:' . max( 0, min( 24, (int) $radius ) ) . 'px;';
+		$fonts = self::fonts();
+		$font  = (string) $this->get_plugin_setting( 'font' );
+		$rule  = '';
+		if ( 'theme' === $font ) {
+			$rule = '.estg.estg,.estg-space.estg-space{font-family:inherit}';
+		} elseif ( '' !== $font && isset( $fonts[ $font ] ) ) {
+			$css .= '--estg-font:' . $fonts[ $font ][1] . ';';
 		}
-		if ( '' !== $css ) {
-			wp_add_inline_style( 'estg-front', '.estg,.estg-space{' . $css . '}' );
+		if ( '' !== $css || '' !== $rule ) {
+			wp_add_inline_style( 'estg-skin', ( '' !== $css ? '.estg.estg,.estg-space.estg-space{' . $css . '}' : '' ) . $rule );
 		}
 	}
 
@@ -313,7 +355,7 @@ class Addon extends \GFAddOn {
 		return array(
 			array(
 				'title'       => __( 'Appearance', 'entrystage' ),
-				'description' => '<p>' . esc_html__( 'These settings apply to every list of the site. The colours and the rounding are only used by the EntryStage style. For finer changes, see "Look and feel" in the documentation (CSS variables and classes).', 'entrystage' ) . '</p>',
+				'description' => '<p>' . esc_html__( 'These settings apply to every list of the site. The colours and the font are used by the styles only (not by Minimal and None); leave a colour empty to keep the one of the style. For finer changes, see "Look and feel" in the documentation (CSS variables and classes).', 'entrystage' ) . '</p>',
 				'fields'      => array_merge(
 					array(
 						array(
@@ -321,31 +363,24 @@ class Addon extends \GFAddOn {
 							'type'          => 'radio',
 							'label'         => __( 'Style of the lists', 'entrystage' ),
 							'default_value' => $this->style_mode(),
-							'choices'       => array(
-								array(
-									'value' => 'full',
-									'label' => __( 'EntryStage: the look of the plugin, with the colours below', 'entrystage' ),
-								),
-								array(
-									'value' => 'minimal',
-									'label' => __( 'Minimal: layout only (columns, cards on phones, widths); colours, buttons and fonts come from your theme', 'entrystage' ),
-								),
-								array(
-									'value' => 'none',
-									'label' => __( 'None: no stylesheet; you style the list entirely from your theme', 'entrystage' ),
-								),
-							),
+							'choices'       => $this->style_choices(),
+						),
+						array(
+							'name'  => 'style_preview',
+							'type'  => 'html',
+							'label' => __( 'Preview of the styles', 'entrystage' ),
+							'html'  => $this->style_previews(),
 						),
 					),
 					$this->color_fields(),
 					array(
 						array(
-							'name'        => 'radius',
-							'type'        => 'text',
-							'input_type'  => 'number',
-							'label'       => __( 'Corner rounding (pixels, 0 to 24)', 'entrystage' ),
-							'class'       => 'small',
-							'placeholder' => '6',
+							'name'          => 'font',
+							'type'          => 'select',
+							'label'         => __( 'Font of the texts', 'entrystage' ),
+							'description'   => __( 'Fonts already installed on the computer of the visitor: nothing is loaded from another site.', 'entrystage' ),
+							'default_value' => '',
+							'choices'       => $this->font_choices(),
 						),
 					)
 				),
@@ -354,7 +389,84 @@ class Addon extends \GFAddOn {
 	}
 
 	/**
-	 * Colour pickers of the full style.
+	 * Choices of the style setting: the styles, then Minimal and None.
+	 *
+	 * @return array
+	 */
+	private function style_choices() {
+		$out = array();
+		foreach ( self::skins() as $value => $label ) {
+			$out[] = array(
+				'value' => $value,
+				'label' => $label,
+			);
+		}
+		$out[] = array(
+			'value' => 'minimal',
+			'label' => __( 'Minimal: layout only (columns, cards on phones, widths); colours, buttons and fonts come from your theme', 'entrystage' ),
+		);
+		$out[] = array(
+			'value' => 'none',
+			'label' => __( 'None: no stylesheet; you style the list entirely from your theme', 'entrystage' ),
+		);
+		return $out;
+	}
+
+	/**
+	 * Preview of each style under the style setting: the list, the board (EntryStage Pro) and a phone.
+	 * A click on a preview picks the style (assets/js/colors.js).
+	 *
+	 * @return string Safe HTML.
+	 */
+	private function style_previews() {
+		$names = array(
+			'editorial' => __( 'Editorial template', 'entrystage' ),
+		);
+		$kinds = array( 'list' => __( 'List', 'entrystage' ) );
+		$kinds['mobile'] = __( 'Phone', 'entrystage' );
+		$current = $this->style_mode();
+		// right after a save, the page is built before the new choice is stored: show the choice just sent
+		$posted = sanitize_key( (string) rgpost( '_gform_setting_style' ) );
+		if ( '' !== $posted && ( array_key_exists( $posted, self::skins() ) || in_array( $posted, array( 'minimal', 'none' ), true ) ) ) {
+			$current = $posted;
+		}
+		$h       = '<style>.estg-previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;max-width:1100px;width:0;min-width:100%}'
+			. '.estg-preview{display:flex;flex-direction:column;gap:8px;padding:10px;border:1px solid #dcdcde;border-radius:10px;background:#fff;cursor:pointer;text-align:left;font:inherit}'
+			. '.estg-preview:hover{border-color:#2271b1}.estg-preview.is-current{border-color:#2271b1;box-shadow:0 0 0 2px #2271b1}'
+			. '.estg-preview-name{font-weight:600;font-size:14px}.estg-preview-imgs{display:grid;grid-template-columns:1fr 27%;gap:8px;align-items:start}'
+			. '.estg-preview figure{margin:0}.estg-preview-mobile{grid-column:2;grid-row:1/span 2}'
+			. '.estg-preview img{display:block;width:100%;height:auto;border:1px solid #e5e7eb;border-radius:6px}'
+			. '.estg-preview figcaption{margin-top:3px;font-size:11px;color:#646970}</style>';
+		$h      .= '<div class="estg-previews">';
+		foreach ( $names as $style => $name ) {
+			$h .= '<button type="button" class="estg-preview' . ( $style === $current ? ' is-current' : '' ) . '" data-estg-style="' . esc_attr( $style ) . '" aria-label="' . esc_attr( sprintf( /* translators: %s: name of a style */ __( 'Choose the style %s', 'entrystage' ), $name ) ) . '">';
+			$h .= '<span class="estg-preview-name">' . esc_html( $name ) . '</span><span class="estg-preview-imgs">';
+			foreach ( $kinds as $kind => $label ) {
+				$h .= '<figure class="estg-preview-' . esc_attr( $kind ) . '"><img src="' . esc_url( ENTRYSTAGE_URL . 'assets/img/styles/' . $style . '-' . $kind . '.png' ) . '" alt="' . esc_attr( $name . ' : ' . $label ) . '" loading="lazy"><figcaption>' . esc_html( $label ) . '</figcaption></figure>';
+			}
+			$h .= '</span></button>';
+		}
+		return $h . '</div>';
+	}
+
+	/**
+	 * Choices of the font setting.
+	 *
+	 * @return array
+	 */
+	private function font_choices() {
+		$out = array();
+		foreach ( self::fonts() as $value => $font ) {
+			$out[] = array(
+				'value' => $value,
+				'label' => $font[0],
+			);
+		}
+		return $out;
+	}
+
+	/**
+	 * Colour pickers of the styles.
 	 *
 	 * @return array
 	 */
@@ -367,8 +479,7 @@ class Addon extends \GFAddOn {
 				'label'         => $color[2],
 				'description'   => $color[3],
 				'class'         => 'small estg-color-field',
-				'default_value' => $color[1],
-				'placeholder'   => $color[1],
+				'default_value' => '',
 			);
 		}
 		return $out;
@@ -380,14 +491,16 @@ class Addon extends \GFAddOn {
 	 * @param array $settings Posted settings.
 	 */
 	public function update_plugin_settings( $settings ) {
-		foreach ( array_keys( self::color_settings() ) as $name ) {
+		unset( $settings['style_preview'] );
+		foreach ( self::color_settings() as $name => $color ) {
 			$value             = sanitize_hex_color( trim( (string) rgar( $settings, $name ) ) );
-			$settings[ $name ] = $value ? $value : '';
+			// a colour equal to the default of the first versions is the colour of the style
+			$settings[ $name ] = $value && strtolower( $value ) !== $color[1] ? $value : '';
 		}
-		$settings['style'] = in_array( rgar( $settings, 'style' ), array( 'full', 'minimal', 'none' ), true ) ? $settings['style'] : 'full';
+		$style             = (string) rgar( $settings, 'style' );
+		$settings['style'] = array_key_exists( $style, self::skins() ) || in_array( $style, array( 'minimal', 'none' ), true ) ? $style : 'editorial';
 		$settings['load_css'] = 'none' === $settings['style'] ? '0' : '1';   // Kept for older code reading it.
-		$radius             = trim( (string) rgar( $settings, 'radius' ) );
-		$settings['radius'] = is_numeric( $radius ) ? (string) max( 0, min( 24, (int) $radius ) ) : '';
+		$settings['font']  = array_key_exists( (string) rgar( $settings, 'font' ), self::fonts() ) ? (string) rgar( $settings, 'font' ) : '';
 		parent::update_plugin_settings( $settings );
 	}
 

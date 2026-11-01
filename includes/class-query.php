@@ -62,6 +62,8 @@ class Query {
 
 		$filters = array();
 
+		$board = false;
+
 		return array(
 			'user'     => isset( $atts['user_filter'] ) ? $atts['user_filter'] : null,
 			'fixed'    => isset( $atts['fixed'] ) ? (array) $atts['fixed'] : array(),
@@ -75,6 +77,7 @@ class Query {
 			'from'     => '',
 			'to'       => '',
 			'filters'  => $filters,
+			'board'    => $board,
 		);
 	}
 

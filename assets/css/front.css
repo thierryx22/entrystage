@@ -7,7 +7,11 @@
 	--estg-bg-alt: #f9fafb;
 	--estg-danger: #b91c1c;
 	--estg-radius: 6px;
+	--estg-surface: #fff;
+	--estg-on-accent: #fff;
 }
+/* text colour and font of the style (inherited from the theme when the style sets none) */
+.estg, .estg-space { color: var(--estg-text, inherit); font-family: var(--estg-font, inherit); }
 .estg { font-size: 0.95em; margin: 1em 0; }
 .estg *, .estg *::before, .estg *::after { box-sizing: border-box; }
 .estg-space { font-size: 0.95em; margin: 1em 0; }
@@ -25,19 +29,23 @@
 .estg-tab { --estg-pill: var(--estg-accent); display: inline-flex; align-items: center; gap: .4em; padding: .35em .8em; border: 1px solid var(--estg-border); border-radius: 999px; text-decoration: none; color: inherit; }
 .estg-tab.is-active { border-color: var(--estg-pill); box-shadow: inset 0 0 0 1px var(--estg-pill); font-weight: 600; }
 .estg-count { font-size: .85em; color: var(--estg-muted); }
+/* tabs, sort links and page numbers are never underlined by the theme */
+.estg .estg-tabs a.estg-tab, .estg .estg-table a.estg-sort, .estg .estg-pages a.estg-page { text-decoration: none; }
+.estg .estg-table a.estg-sort { color: inherit; }
+.estg .estg-table a.estg-sort.is-active { color: var(--estg-accent); }
 
 /* Toolbar */
 .estg-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .6em 1em; margin: 0 0 1em; }
 .estg-field { display: flex; flex-direction: column; gap: .2em; margin: 0; }
 .estg-field > span { font-size: .85em; color: var(--estg-muted); }
-.estg-field input, .estg-field select { min-height: 2.2em; padding: .3em .5em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); }
+.estg-field input, .estg-field select { min-height: 2.2em; padding: .3em .5em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: var(--estg-surface); color: inherit; font: inherit; }
 .estg-tools { display: flex; align-items: center; gap: .6em; margin-left: auto; }
 
 /* Buttons and links */
-.estg-btn { display: inline-block; padding: .4em .9em; border: 1px solid var(--estg-accent); border-radius: var(--estg-radius); background: var(--estg-accent); color: #fff; cursor: pointer; text-decoration: none; line-height: 1.4; font: inherit; }
-.estg-btn:hover, .estg-btn:focus { filter: brightness(.92); color: #fff; }
+.estg-btn { display: inline-block; padding: .4em .9em; border: 1px solid var(--estg-accent); border-radius: var(--estg-radius); background: var(--estg-accent); color: var(--estg-on-accent); cursor: pointer; text-decoration: none; line-height: 1.4; font: inherit; }
+.estg-btn:hover, .estg-btn:focus { filter: brightness(.92); color: var(--estg-on-accent); }
 .estg-btn-ghost { background: transparent; color: var(--estg-accent); }
-.estg-btn-ghost:hover, .estg-btn-ghost:focus { color: var(--estg-accent); background: #eff6ff; }
+.estg-btn-ghost:hover, .estg-btn-ghost:focus { color: var(--estg-accent); background: color-mix(in srgb, var(--estg-accent) 8%, transparent); }
 .estg-btn-small { padding: .15em .5em; font-size: .85em; }
 .estg-link { background: none; border: 0; padding: 0; color: var(--estg-accent); cursor: pointer; text-decoration: underline; font: inherit; }
 .estg-danger { color: var(--estg-danger); }
@@ -60,6 +68,8 @@
 /* The list always fits its container: no horizontal scroll bar; long values wrap. */
 .estg-scroll { overflow-x: visible; max-width: 100%; }
 .estg-table { width: 100%; border-collapse: collapse; margin: 0; }
+/* some themes (Divi among them) frame every table of the content and add a margin under it */
+.estg .estg-scroll table.estg-table, .estg table.estg-table { border: 0; margin: 0; }
 .estg-table th, .estg-table td { padding: .55em .7em; border-bottom: 1px solid var(--estg-border); text-align: left; vertical-align: top; }
 /* themes (Divi: .entry-content tr td { padding: 6px 24px }) must not widen the cells. */
 .estg .estg-table th, .estg .estg-table td { padding: .55em .7em; border-top: 0; }
@@ -88,7 +98,7 @@
 .estg-total { color: var(--estg-muted); }
 .estg-pages { display: flex; flex-wrap: wrap; gap: .3em; }
 .estg-page { display: inline-block; min-width: 2.2em; padding: .3em .5em; text-align: center; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); text-decoration: none; color: inherit; }
-.estg-page.is-active { background: var(--estg-accent); border-color: var(--estg-accent); color: #fff; }
+.estg-page.is-active { background: var(--estg-accent); border-color: var(--estg-accent); color: var(--estg-on-accent); }
 .estg-gap { padding: .3em; color: var(--estg-muted); }
 .estg-empty { color: var(--estg-muted); }
 
@@ -103,8 +113,8 @@
 	.estg-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 	.estg-table colgroup { display: none; }
 	.estg-table, .estg-table tbody, .estg-table tr, .estg-table td { display: block; width: 100% !important; }
-	.estg-table tr { margin: 0 0 .8em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: #fff; }
-	.estg-table tbody tr:nth-child(even) { background: #fff; }
+	.estg-table tr { margin: 0 0 .8em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: var(--estg-surface); }
+	.estg-table tbody tr:nth-child(even) { background: var(--estg-surface); }
 	.estg-table td { display: flex; gap: .8em; justify-content: space-between; border-bottom: 1px solid var(--estg-border); text-align: right; white-space: normal; }
 	.estg-table td:last-child { border-bottom: 0; }
 	.estg-table td[data-label]::before { content: attr(data-label); font-weight: 600; text-align: left; flex: 0 0 40%; }
@@ -123,8 +133,8 @@
 .estg.estg-cards .estg-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .estg.estg-cards .estg-table colgroup { display: none; }
 .estg.estg-cards .estg-table, .estg.estg-cards .estg-table tbody, .estg.estg-cards .estg-table tr, .estg.estg-cards .estg-table td { display: block; width: 100% !important; }
-.estg.estg-cards .estg-table tr { margin: 0 0 .8em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: #fff; }
-.estg.estg-cards .estg-table tbody tr:nth-child(even) { background: #fff; }
+.estg.estg-cards .estg-table tr { margin: 0 0 .8em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: var(--estg-surface); }
+.estg.estg-cards .estg-table tbody tr:nth-child(even) { background: var(--estg-surface); }
 .estg.estg-cards .estg-table td { display: flex; gap: .8em; justify-content: space-between; border-bottom: 1px solid var(--estg-border); text-align: right; white-space: normal; }
 .estg.estg-cards .estg-table td:last-child { border-bottom: 0; }
 .estg.estg-cards .estg-table td[data-label]::before { content: attr(data-label); font-weight: 600; text-align: left; flex: 0 0 40%; }
@@ -142,7 +152,7 @@
 .estg-thumb img, .estg-table .estg-thumb img { width: var(--estg-thumb); height: var(--estg-thumb); max-width: none; object-fit: cover; border-radius: var(--estg-radius); background: var(--estg-bg-alt); border: 1px solid var(--estg-border); }
 .estg-more-files { color: var(--estg-muted); font-size: .85em; }
 .estg-file { display: inline-flex; align-items: center; gap: .3em; color: var(--estg-accent); overflow-wrap: anywhere; }
-.estg-signature { height: var(--estg-thumb); width: auto; max-width: 100%; background: #fff; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); }
+.estg-signature { height: var(--estg-thumb); width: auto; max-width: 100%; background: var(--estg-surface); border: 1px solid var(--estg-border); border-radius: var(--estg-radius); }
 .estg-download { white-space: nowrap; }
 
 /* More details */
@@ -190,15 +200,20 @@
    even when the theme forces its own with !important. To change them in your own CSS, use the same selectors
    with !important. */
 .estg .estg-table button.estg-act, .estg .estg-table a.estg-act,
+.estg .estg-board button.estg-act, .estg .estg-board a.estg-act,
 .estg .estg-table button.estg-more { margin: 0 !important; min-width: 0 !important; min-height: 0 !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; font: inherit !important; line-height: 1 !important; text-shadow: none !important; }
-.estg .estg-table button.estg-act, .estg .estg-table a.estg-act { padding: .35em !important; border: 1px solid var(--estg-border) !important; border-radius: var(--estg-radius) !important; background: transparent !important; color: var(--estg-accent) !important; }
+.estg .estg-table button.estg-act, .estg .estg-table a.estg-act,
+.estg .estg-board button.estg-act, .estg .estg-board a.estg-act { padding: .35em !important; border: 1px solid var(--estg-border) !important; border-radius: var(--estg-radius) !important; background: transparent !important; color: var(--estg-accent) !important; }
 .estg .estg-table button.estg-act:hover, .estg .estg-table button.estg-act:focus-visible,
-.estg .estg-table a.estg-act:hover, .estg .estg-table a.estg-act:focus-visible { border-color: var(--estg-accent) !important; background: color-mix(in srgb, var(--estg-accent) 10%, transparent) !important; color: var(--estg-accent) !important; }
-.estg .estg-table button.estg-act-archive:hover, .estg .estg-table button.estg-act-archive:focus-visible { border-color: var(--estg-danger) !important; background: color-mix(in srgb, var(--estg-danger) 8%, transparent) !important; color: var(--estg-danger) !important; }
+.estg .estg-table a.estg-act:hover, .estg .estg-table a.estg-act:focus-visible,
+.estg .estg-board button.estg-act:hover, .estg .estg-board button.estg-act:focus-visible,
+.estg .estg-board a.estg-act:hover, .estg .estg-board a.estg-act:focus-visible { border-color: var(--estg-accent) !important; background: color-mix(in srgb, var(--estg-accent) 10%, transparent) !important; color: var(--estg-accent) !important; }
+.estg .estg-table button.estg-act-archive:hover, .estg .estg-table button.estg-act-archive:focus-visible,
+.estg .estg-board button.estg-act-archive:hover, .estg .estg-board button.estg-act-archive:focus-visible { border-color: var(--estg-danger) !important; background: color-mix(in srgb, var(--estg-danger) 8%, transparent) !important; color: var(--estg-danger) !important; }
 .estg .estg-table button.estg-more { width: 2.2em !important; height: 2.2em !important; padding: 0 !important; border: 0 !important; border-radius: 50% !important; background: transparent !important; color: var(--estg-muted) !important; }
 .estg .estg-table button.estg-more:hover, .estg .estg-table button.estg-more:focus-visible { background: color-mix(in srgb, var(--estg-accent) 12%, transparent) !important; color: var(--estg-accent) !important; }
-.estg button.estg-btn, .estg a.estg-btn { margin: 0 !important; min-height: 0 !important; padding: .4em .9em !important; border: 1px solid var(--estg-accent) !important; border-radius: var(--estg-radius) !important; background: var(--estg-accent) !important; color: #fff !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; text-shadow: none !important; font: inherit !important; line-height: 1.4 !important; }
-.estg button.estg-btn:hover, .estg button.estg-btn:focus, .estg a.estg-btn:hover, .estg a.estg-btn:focus { background: var(--estg-accent) !important; color: #fff !important; filter: brightness(.92) !important; }
+.estg button.estg-btn, .estg a.estg-btn { margin: 0 !important; min-height: 0 !important; padding: .4em .9em !important; border: 1px solid var(--estg-accent) !important; border-radius: var(--estg-radius) !important; background: var(--estg-accent) !important; color: var(--estg-on-accent) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; text-shadow: none !important; font: inherit !important; line-height: 1.4 !important; }
+.estg button.estg-btn:hover, .estg button.estg-btn:focus, .estg a.estg-btn:hover, .estg a.estg-btn:focus { background: var(--estg-accent) !important; color: var(--estg-on-accent) !important; filter: brightness(.92) !important; }
 .estg button.estg-btn-ghost, .estg a.estg-btn-ghost, .estg button.estg-btn-ghost:hover, .estg a.estg-btn-ghost:hover { background: transparent !important; color: var(--estg-accent) !important; filter: none !important; }
 .estg button.estg-btn-ghost:hover, .estg a.estg-btn-ghost:hover { background: color-mix(in srgb, var(--estg-accent) 8%, transparent) !important; }
 .estg button.estg-btn-small, .estg a.estg-btn-small { padding: .15em .5em !important; font-size: .85em !important; }
@@ -221,6 +236,8 @@
 .estg-field-date input { width: 10em; }
 .estg-filter-go { display: flex; align-items: center; gap: .8em; min-height: 2.2em; }
 .estg .estg-toolbar .estg-tools { margin-left: auto; align-self: flex-end; }
+/* tools (List / Board, print, export) on their own row above the filters, aligned right: the filters keep the full width */
+.estg .estg-toolbar .estg-tools { order: -1; flex: 1 1 100%; justify-content: flex-end; align-self: auto; }
 .estg .estg-toolbar .estg-btn .estg-icon { width: 1.1em; height: 1.1em; }
 /* Bulk actions just above the table, with the number of checked rows. */
 .estg .estg-bulk { display: flex; flex-wrap: wrap; align-items: center; gap: .5em .7em; margin: 0 0 .6em; padding: .4em .6em; border-left: 3px solid var(--estg-border); }
@@ -241,6 +258,19 @@
 @media (max-width: 700px) { .estg-perpage { margin-left: 0; } .estg .estg-toolbar .estg-tools { margin-left: 0; } }
 .estg button.estg-nojs[hidden], .estg .estg-act[hidden] { display: none; }
 
+/* Late rows (red) and rows tinted with the colour of their status. */
+/* mixed with white, not transparent: the background of the theme must not show through; specific enough
+   to win over the white of the cards. */
+.estg .estg-table tbody tr.estg-late, .estg .estg-table tbody tr.estg-late:nth-child(even) { background: color-mix(in srgb, var(--estg-danger) 7%, var(--estg-surface)); }
+.estg .estg-table tbody tr.estg-late > td:first-child { box-shadow: inset 3px 0 0 var(--estg-danger); }
+.estg.estg-cards .estg-table tbody tr.estg-late { border-color: var(--estg-danger); }
+.estg-late-badge { display: inline-block; padding: .05em .5em; border-radius: 999px; background: var(--estg-danger); color: #fff; font-size: .78em; font-weight: 600; white-space: nowrap; }
+.estg .estg-table tbody tr.estg-tinted, .estg .estg-table tbody tr.estg-tinted:nth-child(even) { background: color-mix(in srgb, var(--estg-row) 8%, var(--estg-surface)); }
+
+/* List updated without reloading the page: dimmed while the new one loads. */
+.estg.is-loading, .estg-space.is-loading { opacity: .55; transition: opacity .15s; pointer-events: none; }
+.estg:focus { outline: none; }
+
 /* Printable list (Print button) and printing a list page. */
 .estg-print-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .8em; margin: 0 0 1em; }
 .estg-print-title { display: none; margin: 0 0 .2em; }   /* on paper only: on screen the page has its own title. */
@@ -260,3 +290,42 @@
 	.estg-thumb img { width: 40px; height: 40px; }
 	.estg a { color: #000; text-decoration: none; }
 }
+
+/* Entry page: section titles and history (EntryStage Pro). */
+.estg .estg-view-section { margin: 1.4em 0 .5em; font-family: inherit; font-size: 1.05em; font-weight: 600; line-height: 1.3; }
+.estg-history-list { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--estg-border); }
+.estg-history-list li { position: relative; margin: 0 0 .8em; padding: 0 0 0 1em; }
+.estg-history-list li::before { content: ""; position: absolute; left: -.38em; top: .45em; width: .6em; height: .6em; border-radius: 50%; background: var(--estg-accent); }
+.estg-history-meta { margin: 0; color: var(--estg-muted); font-size: .88em; }
+.estg-history-text { margin: .15em 0 0; overflow-wrap: anywhere; }
+.estg-history-none { color: var(--estg-muted); }
+
+/* List / Board switch and board (EntryStage Pro). */
+.estg-view-switch { display: inline-flex; gap: 0; }
+.estg .estg-view-switch a.estg-btn { border-radius: 0 !important; text-decoration: none !important; }
+.estg .estg-view-switch a.estg-btn:first-child { border-radius: var(--estg-radius) 0 0 var(--estg-radius) !important; }
+.estg .estg-view-switch a.estg-btn:last-child { border-radius: 0 var(--estg-radius) var(--estg-radius) 0 !important; margin-left: -1px !important; }
+.estg .estg-view-switch a.estg-btn.is-active { background: var(--estg-accent) !important; color: var(--estg-on-accent) !important; }
+.estg-board { position: relative; display: flex; gap: .8em; align-items: flex-start; overflow-x: auto; padding: 0 0 .6em; scroll-snap-type: x proximity; }
+.estg-board-col { --estg-pill: var(--estg-muted); flex: 1 1 12em; min-width: 12em; scroll-snap-align: start; padding: .6em; border: 1px solid var(--estg-border); border-top: 3px solid var(--estg-pill); border-radius: var(--estg-radius); background: var(--estg-bg-alt); }
+.estg-board-col.is-over { outline: 2px dashed var(--estg-pill); outline-offset: 2px; background: color-mix(in srgb, var(--estg-pill) 8%, var(--estg-surface)); }
+.estg .estg-board-head { display: flex; align-items: center; justify-content: space-between; gap: .5em; margin: 0 0 .6em; padding: 0; font-family: inherit; font-size: 1em; font-weight: 600; line-height: 1.3; letter-spacing: normal; text-transform: none; }
+.estg-board-head .estg-count { padding: 0 .55em; border-radius: 999px; background: color-mix(in srgb, var(--estg-pill) 15%, var(--estg-surface)); color: var(--estg-pill); font-size: .85em; }
+.estg-board-cards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5em; min-height: 2em; }
+.estg-board-card { padding: .6em .7em; border: 1px solid var(--estg-border); border-radius: var(--estg-radius); background: var(--estg-surface); box-shadow: 0 1px 2px rgba(0, 0, 0, .05); overflow-wrap: anywhere; }
+.estg-board-card[draggable="true"] { cursor: grab; }
+.estg-board-card.is-dragging { opacity: .45; }
+.estg-board-card.estg-late { border-color: var(--estg-danger); box-shadow: inset 3px 0 0 var(--estg-danger); }
+.estg-board-title { margin: 0 0 .3em; font-weight: 600; }
+.estg-board-data { display: grid; grid-template-columns: auto 1fr; gap: .1em .5em; margin: 0 0 .4em; font-size: .88em; }
+.estg-board-data dt { color: var(--estg-muted); }
+.estg-board-data dd { margin: 0; }
+.estg-board-acts { margin: 0 0 .5em; }
+.estg-board-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .4em; margin-top: .5em; font-size: .88em; }
+.estg-board-move { flex: 1 1 auto; }
+.estg-board-move select { width: 100%; }
+.estg-board-move select { max-width: 100%; font: inherit; color: inherit; background: var(--estg-surface); border: 1px solid var(--estg-border); border-radius: var(--estg-radius); min-height: 2em; }
+.estg-board-empty { margin: .2em 0; color: var(--estg-muted); font-size: .9em; }
+.estg-board-more { display: inline-block; margin-top: .5em; font-size: .88em; }
+.estg-js .estg-board .estg-nojs { display: none !important; }
+.estg.is-loading .estg-board { opacity: .6; }

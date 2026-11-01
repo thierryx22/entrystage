@@ -226,13 +226,20 @@ class Renderer {
 		$form_id = (int) $form['id'];
 		$layout  = Settings::layout( $form, $settings );
 		$state  = Query::state( $form, $settings, array(), $atts );
-		$result = Query::run( $form, $settings, $state );
+		// the board (EntryStage Pro) fetches its entries column by column.
+		$result = empty( $state['board'] ) ? Query::run( $form, $settings, $state ) : array(
+			'entries' => array(),
+			'total'   => 0,
+		);
 		$here   = Urls::list_url( $form_id, $state );
 		$with_bulk = false;
 		$more = false;
 
 		ob_start();
 		echo '<div class="estg' . ( 96 === (int) $settings['thumb_size'] ? ' estg-thumbs-96' : '' ) . '" id="estg-' . esc_attr( $form_id ) . '" data-form="' . esc_attr( $form_id ) . '"';
+		if ( ! empty( $settings['ajax'] ) ) {
+			echo ' data-estg-ajax';
+		}
 		echo '>';
 		do_action( 'estg_before_list', $form, $settings, $state );
 		if ( ( ! empty( $settings['edit'] ) || ! empty( $settings['duplicate'] ) ) && empty( $settings['page_id'] ) && empty( $settings['page_url'] ) && Access::is_manager( $settings ) ) {
@@ -308,7 +315,8 @@ class Renderer {
 	private static function row( $form, $entry, array $settings, array $layout, $with_bulk, $here, $span = 0 ) {
 		$id      = (int) $entry['id'];
 		$classes = (array) apply_filters( 'estg_row_classes', array( 'estg-row' ), $entry, $settings );
-		$h       = '<tr class="' . esc_attr( implode( ' ', array_map( 'sanitize_html_class', $classes ) ) ) . '" data-entry="' . esc_attr( $id ) . '">';
+		$style = '';
+		$h       = '<tr class="' . esc_attr( implode( ' ', array_map( 'sanitize_html_class', $classes ) ) ) . '" data-entry="' . esc_attr( $id ) . '"' . $style . '>';
 		foreach ( $layout as $item ) {
 			$class = 'estg-col-' . sanitize_html_class( $item['key'] );
 			if ( 'field' === $item['kind'] ) {
@@ -454,6 +462,8 @@ class Renderer {
 			'chevron'   => '<path d="M6 9l6 6 6-6"/>',
 			'search'    => '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
 			'print'     => '<path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/>',
+			'list'      => '<path d="M8 6h12M8 12h12M8 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01"/>',
+			'board'     => '<rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="10" rx="1"/><rect x="17" y="4" width="4" height="13" rx="1"/>',
 		);
 		/**
 		 * Filters the SVG content of an icon (the inner elements of a 24x24 <svg>).
@@ -507,7 +517,8 @@ class Renderer {
 		$has_tools = ! empty( $settings['search'] );
 		$export = false;
 		$print = ! empty( $settings['print'] );
-		if ( ! $has_tools && ! $export && ! $print ) {
+		$switch = false;
+		if ( ! $has_tools && ! $export && ! $print && ! $switch ) {
 			return '';
 		}
 		$uid    = 'estg-' . $form_id;
@@ -518,7 +529,7 @@ class Renderer {
 		if ( isset( $_GET['estg_tab'] ) && absint( $_GET['estg_tab'] ) ) {
 			$h .= '<input type="hidden" name="estg_tab" value="' . esc_attr( absint( $_GET['estg_tab'] ) ) . '">'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		}
-		foreach ( array( 'estg_st' => '' !== (string) $state['status'] ? $state['status'] : ( ! empty( $state['status_all'] ) ? '_all' : '' ), 'estg_o' => $state['orderby'], 'estg_d' => $state['dir'], 'estg_pp' => $state['per_page'] ) as $name => $value ) {
+		foreach ( array( 'estg_st' => '' !== (string) $state['status'] ? $state['status'] : ( ! empty( $state['status_all'] ) ? '_all' : '' ), 'estg_o' => $state['orderby'], 'estg_d' => $state['dir'], 'estg_pp' => $state['per_page'], 'estg_v' => ! empty( $state['board'] ) ? 'board' : '' ) as $name => $value ) {
 			if ( '' !== (string) $value ) {
 				$h .= '<input type="hidden" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value ) . '">';
 			}
@@ -545,17 +556,18 @@ class Renderer {
 			}
 			$h .= '</div></div>';
 		}
-		if ( $export || $print ) {
+		if ( $export || $print || $switch ) {
 			$h .= '<div class="estg-tools">';
 		}
 		if ( $print ) {
 			$h .= '<a class="estg-btn estg-btn-ghost" href="' . esc_url( Urls::list_url( $form_id, $state, array( 'estg_p' => null, 'estg_print' => $form_id ) ) ) . '" title="' . esc_attr__( 'Entries matching the filters, every page', 'entrystage' ) . '">' . self::icon( 'print' ) . '<span>' . esc_html__( 'Print', 'entrystage' ) . '</span></a>';
 		}
-		if ( $export || $print ) {
+		if ( $export || $print || $switch ) {
 			$h .= '</div>';
 		}
 		return $h . '</form>';
 	}
+
 
 	/**
 	 * Rows per page, next to the pagination. Changing it reloads the list (front.js); the
@@ -666,19 +678,49 @@ class Renderer {
 		$skip = array( 'html', 'section', 'page', 'captcha', 'password' );
 		$h    = '<div class="estg estg-view"><p><a class="estg-link" href="' . esc_url( $back ) . '">&larr; ' . esc_html__( 'Back to the list', 'entrystage' ) . '</a></p>';
 		$h   .= '<h2 class="estg-view-title">' . esc_html( sprintf( /* translators: %d: entry id */ __( 'Entry #%d', 'entrystage' ), (int) $entry['id'] ) ) . '</h2>';
-		$h .= '<dl class="estg-detail">';
-		foreach ( (array) $form['fields'] as $field ) {
-			if ( in_array( $field->type, $skip, true ) || ! empty( rgobj( $field, 'adminOnly' ) ) || in_array( rgobj( $field, 'visibility' ), array( 'hidden', 'administrative' ), true ) ) {
-				continue;
+		$page = array();
+		if ( $page ) {
+			// the fields and section titles chosen in the settings, in their order; empty values are left out,
+			// and so is a section title followed by no value.
+			$open    = false;
+			$pending = '';
+			foreach ( $page as $item ) {
+				if ( 'section' === $item['type'] ) {
+					$pending = '<h3 class="estg-view-section">' . esc_html( $item['label'] ) . '</h3>';
+					continue;
+				}
+				$html = Fields::render( $form, $entry, $item['field'], $item['mode'], $settings );
+				if ( '' === trim( wp_strip_all_tags( (string) $html, true ) ) && false === strpos( (string) $html, '<img' ) ) {
+					continue;
+				}
+				if ( '' !== $pending ) {
+					$h      .= ( $open ? '</dl>' : '' ) . $pending;
+					$open    = false;
+					$pending = '';
+				}
+				if ( ! $open ) {
+					$h   .= '<dl class="estg-detail">';
+					$open = true;
+				}
+				$h .= '<dt>' . esc_html( $item['label'] ) . '</dt><dd>' . wp_kses_post( $html ) . '</dd>';
 			}
-			$value = \GFFormsModel::get_lead_field_value( $entry, $field );
-			$html  = Fields::display( $field, $value, $entry, 'html' );
-			if ( '' === trim( wp_strip_all_tags( (string) $html ) ) ) {
-				continue;
+			$h .= $open ? '</dl>' : '';
+		} else {
+			$h .= '<dl class="estg-detail">';
+			foreach ( (array) $form['fields'] as $field ) {
+				if ( in_array( $field->type, $skip, true ) || ! empty( rgobj( $field, 'adminOnly' ) ) || in_array( rgobj( $field, 'visibility' ), array( 'hidden', 'administrative' ), true ) ) {
+					continue;
+				}
+				$value = \GFFormsModel::get_lead_field_value( $entry, $field );
+				$html  = Fields::display( $field, $value, $entry, 'html' );
+				if ( '' === trim( wp_strip_all_tags( (string) $html ) ) ) {
+					continue;
+				}
+				$h .= '<dt>' . esc_html( wp_strip_all_tags( \GFCommon::get_label( $field ) ) ) . '</dt><dd>' . wp_kses_post( $html ) . '</dd>';
 			}
-			$h .= '<dt>' . esc_html( wp_strip_all_tags( \GFCommon::get_label( $field ) ) ) . '</dt><dd>' . wp_kses_post( $html ) . '</dd>';
+			$h .= '</dl>';
 		}
-		$h .= '</dl></div>';
+		$h .= '</div>';
 		return (string) apply_filters( 'estg_entry_view_html', $h, $entry, $form, $settings );
 	}
 }

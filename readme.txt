@@ -4,7 +4,7 @@ Tags: gravity forms, entries, front-end, list, edit
 Requires at least: 6.2
 Requires PHP: 7.4
 Tested up to: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,23 +23,23 @@ Everything is set up inside Gravity Forms, in one settings tab per form laid out
 * Edit an entry in the original form: the form opens already filled in, and the changes are saved into the same entry.
 * Duplicate an entry: the form opens filled in, and a new entry is created.
 * Archive an entry (moved to the Gravity Forms trash, or deleted permanently if you prefer).
-* Search the list.
+* Search the list, sort it and change pages without reloading the page.
 
 **For you**
 
-* Choose the columns, their order, width and display, and who sees the list: everyone, logged-in users or some roles; their own entries or all entries.
+* Choose the columns, their order, width and display, and who sees the list (everyone, logged-in users or some roles; their own entries or all).
 * A "My entries" page with the shortcode `[entrystage form="12" user="current"]`.
-* An "EntryStage list" block for the block editor, with a live preview, as well as the shortcode.
-* A personal space: several forms on one page, one tab per form with its number of entries, with `[entrystage forms="12,15" user="current"]`.
-* A Print button: a clean printable page of the entries matching the filters.
-* Three looks: the EntryStage style with your colours, a minimal style that takes the look of your theme, or no style at all.
-* Optional protection of the file links of a form: only people who may see the entry can download its files.
+* An "EntryStage list" block with a live preview, or the shortcode.
+* A personal space: several forms on one page, one tab per form, with `[entrystage forms="12,15" user="current"]`.
+* A Print button: a clean page of the entries matching the filters.
+* Three looks: the Editorial style with your colours and font, a minimal style that takes the look of your theme, or no style at all.
+* Optional protection of file links: only people who may see the entry download its files.
 
 **EntryStage Pro**
 
-Follow every entry from start to finish. Requests, registrations, applications, orders: with EntryStage Pro, each entry gets a status of your own (for example Received, In progress, Done), shown as a coloured label. One click moves it to the next step, one tab per status counts what is waiting at each step, and every change is written in the notes of the entry. Your team sees at a glance what is left to do.
+Follow every entry from start to finish. Requests, registrations, applications, orders: with EntryStage Pro, each entry gets a status of your own (Received, In progress, Done…), shown as a coloured label, with one tab per status and a next-step button. E-mails can go out at each step, late entries show in red, validated entries can be locked, a board (Kanban) moves entries from step to step, the history of the changes is kept, and a webhook can notify Slack or your other tools.
 
-Also included: More details under each row, bulk actions, CSV export, drop-down and date filters, PDF links with Gravity PDF, custom icons, shortcode conditions and priority support.
+Also included: More details under each row, bulk actions, CSV export, drop-down and date filters, PDF links, custom icons, shortcode conditions and priority support.
 EntryStage Pro will be available soon. It will replace this plugin and keep all your settings.
 
 **Requirements**
@@ -94,9 +94,12 @@ No. EntryStage does not contact any external server: no data, no statistics and 
 2. The same list on a phone: each row becomes a card.
 3. Settings of a form, step "Columns": available fields and columns of the list.
 4. Settings of a form, step "Shortcode": the shortcode composer and examples taken from the form.
-5. Plugin settings: style of the lists and colours.
+5. Plugin settings: style of the lists with its preview, colours and font.
 
 == Changelog ==
+
+= 1.1.0 =
+* New: search, sorting, pages, rows per page and tabs update the list without reloading the page (on by default, can be switched off per form).
 
 = 1.0.0 =
 * First public release.

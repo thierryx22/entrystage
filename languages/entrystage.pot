@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: EntryStage 1.0.0\n"
+"Project-Id-Version: EntryStage 1.1.0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,332 +12,425 @@ msgstr ""
 msgid "EntryStage and EntryStage Pro are both active: only one of them runs. Deactivate EntryStage (the free edition) to use EntryStage Pro."
 msgstr ""
 
-#: includes/bootstrap.php:86
+#: includes/bootstrap.php:99
 msgid "EntryStage requires Gravity Forms to be installed and active."
 msgstr ""
 
-#: includes/class-actions.php:218
+#: includes/class-actions.php:228
 #, php-format
 msgid "Copy of entry #%d made from the entry list."
 msgstr ""
 
-#: includes/class-addon.php:89 includes/class-addon.php:92
+#: includes/class-addon.php:83
+msgid "Editorial template: no frame, headings in small capitals, a strong rule on top of the table, underlined tabs and fields"
+msgstr ""
+
+#: includes/class-addon.php:86
+msgid "Atelier template: soft warm background, every row a white rounded card, pill tabs"
+msgstr ""
+
+#: includes/class-addon.php:87
+msgid "Studio template: a band in the main colour holds the tabs and the search, the list in a large white card"
+msgstr ""
+
+#: includes/class-addon.php:88
+msgid "Night template: dark graphite surfaces, for sites with a dark background"
+msgstr ""
+
+#: includes/class-addon.php:119
+msgid "Font of the style"
+msgstr ""
+
+#: includes/class-addon.php:120
+msgid "Font of the theme"
+msgstr ""
+
+#: includes/class-addon.php:121
+msgid "System (sans serif)"
+msgstr ""
+
+#: includes/class-addon.php:122
+msgid "Humanist (sans serif)"
+msgstr ""
+
+#: includes/class-addon.php:123
+msgid "Geometric (sans serif)"
+msgstr ""
+
+#: includes/class-addon.php:124
+msgid "Classic serif"
+msgstr ""
+
+#: includes/class-addon.php:136
 msgid "Main colour"
 msgstr ""
 
-#: includes/class-addon.php:89
-msgid "Buttons, links, icons, active tab and page."
+#: includes/class-addon.php:136
+msgid "Buttons, links, icons, active tab and page. Empty: the colour of the style."
 msgstr ""
 
-#: includes/class-addon.php:92
-msgid "Buttons, links, icons, current page."
-msgstr ""
-
-#: includes/class-addon.php:94
-msgid "Lines"
-msgstr ""
-
-#: includes/class-addon.php:94
-msgid "Borders of the table, of the buttons and of the fields."
-msgstr ""
-
-#: includes/class-addon.php:96 includes/class-addon.php:99
-msgid "Background of every other row"
-msgstr ""
-
-#: includes/class-addon.php:96
-msgid "Also the background of opened rows and of the filter box."
-msgstr ""
-
-#: includes/class-addon.php:99
-msgid "Also the background of the search box."
-msgstr ""
-
-#: includes/class-addon.php:102 includes/class-addon.php:105
-msgid "Secondary text"
-msgstr ""
-
-#: includes/class-addon.php:102
-msgid "Counters, labels of the fields, chevron."
-msgstr ""
-
-#: includes/class-addon.php:105
-msgid "Number of entries, labels of the fields."
-msgstr ""
-
-#: includes/class-addon.php:107
-msgid "Archive and errors"
-msgstr ""
-
-#: includes/class-addon.php:107
-msgid "Archive button on hover, error messages."
+#: includes/class-addon.php:138 includes/class-addon.php:141
+msgid "Background colour"
 msgstr ""
 
 #: includes/class-addon.php:138
+msgid "Background of the list (Atelier, Studio, Night) or around it (Editorial). Empty: the colour of the style."
+msgstr ""
+
+#: includes/class-addon.php:141
+msgid "Background around the list. Empty: none."
+msgstr ""
+
+#: includes/class-addon.php:143
+msgid "Lines"
+msgstr ""
+
+#: includes/class-addon.php:143
+msgid "Lines of the table, of the cards and of the fields. Empty: the colour of the style."
+msgstr ""
+
+#: includes/class-addon.php:174
 #, php-format
 msgid "%d row checked"
 msgstr ""
 
-#: includes/class-addon.php:140
+#: includes/class-addon.php:176
 #, php-format
 msgid "%d rows checked"
 msgstr ""
 
-#: includes/class-addon.php:141 includes/class-renderer.php:308
+#: includes/class-addon.php:177 includes/class-renderer.php:325
 msgid "No row checked"
 msgstr ""
 
-#: includes/class-addon.php:142
+#: includes/class-addon.php:178
 msgid "Select at least one entry and an action."
 msgstr ""
 
-#: includes/class-addon.php:143
+#: includes/class-addon.php:179
 msgid "Apply this action to the selected entries?"
 msgstr ""
 
-#: includes/class-addon.php:147
+#: includes/class-addon.php:183
 msgid "Loading…"
 msgstr ""
 
-#: includes/class-addon.php:148
+#: includes/class-addon.php:184
 msgid "The details could not be loaded. Please reload the page."
 msgstr ""
 
-#: includes/class-addon.php:228
+#: includes/class-addon.php:274
 msgid "Ready"
 msgstr ""
 
-#: includes/class-addon.php:229
+#: includes/class-addon.php:275
 msgid "To check"
 msgstr ""
 
-#: includes/class-addon.php:230
+#: includes/class-addon.php:276
 msgid "Optional"
 msgstr ""
 
-#: includes/class-addon.php:231
+#: includes/class-addon.php:277
 msgid "Copied"
 msgstr ""
 
-#: includes/class-addon.php:232 includes/class-atelier.php:83 includes/class-atelier.php:858 includes/class-atelier.php:915
+#: includes/class-addon.php:278 includes/class-atelier.php:86 includes/class-atelier.php:969 includes/class-atelier.php:1026
 msgid "Copy"
 msgstr ""
 
-#: includes/class-addon.php:233
+#: includes/class-addon.php:279
 msgid "+ Column"
 msgstr ""
 
-#: includes/class-addon.php:235
+#: includes/class-addon.php:281
 #, php-format
 msgid "Add %s to the columns"
 msgstr ""
 
-#: includes/class-addon.php:237
+#: includes/class-addon.php:283
 #, php-format
 msgid "Move %s up"
 msgstr ""
 
-#: includes/class-addon.php:239
+#: includes/class-addon.php:285
 #, php-format
 msgid "Move %s down"
 msgstr ""
 
-#: includes/class-addon.php:241
+#: includes/class-addon.php:287
 #, php-format
 msgid "Remove %s"
 msgstr ""
 
-#: includes/class-addon.php:242
+#: includes/class-addon.php:288
 msgid "Label"
 msgstr ""
 
-#: includes/class-addon.php:244
+#: includes/class-addon.php:290
 #, php-format
 msgid "For example: %s"
 msgstr ""
 
-#: includes/class-addon.php:245 includes/class-atelier.php:38
+#: includes/class-addon.php:291 includes/class-atelier.php:41
 msgid "Display"
 msgstr ""
 
-#: includes/class-addon.php:246
+#: includes/class-addon.php:292
 msgid "Width"
 msgstr ""
 
-#: includes/class-addon.php:247
+#: includes/class-addon.php:293
 msgid "auto"
 msgstr ""
 
-#: includes/class-addon.php:248
+#: includes/class-addon.php:294
 msgid "Sortable"
 msgstr ""
 
-#: includes/class-addon.php:250
+#: includes/class-addon.php:296
 #, php-format
 msgid "Columns: %d"
 msgstr ""
 
-#: includes/class-addon.php:251
+#: includes/class-addon.php:297
 msgid "Every field is in use."
 msgstr ""
 
-#: includes/class-addon.php:252
+#: includes/class-addon.php:298
 msgid "No field matches."
 msgstr ""
 
-#: includes/class-addon.php:253
+#: includes/class-addon.php:299
 msgid "No column yet: add fields from the left."
 msgstr ""
 
-#: includes/class-addon.php:254 includes/class-atelier.php:381
+#: includes/class-addon.php:300 includes/class-atelier.php:451
 msgid "Date of the entry"
 msgstr ""
 
-#: includes/class-addon.php:255
+#: includes/class-addon.php:301
 msgid "+ Date column"
 msgstr ""
 
-#: includes/class-addon.php:256 includes/class-atelier.php:34 includes/class-settings.php:57
+#: includes/class-addon.php:302 includes/class-atelier.php:37 includes/class-settings.php:57
 msgid "Actions"
 msgstr ""
 
-#: includes/class-addon.php:258
+#: includes/class-addon.php:304
 #, php-format
 msgid "%s more fields: type a name, a type or a field number to find them."
 msgstr ""
 
-#: includes/class-addon.php:260
+#: includes/class-addon.php:306
 #, php-format
 msgid "%s moved."
 msgstr ""
 
-#: includes/class-addon.php:262
+#: includes/class-addon.php:308
 #, php-format
 msgid "%s added."
 msgstr ""
 
-#: includes/class-addon.php:264
+#: includes/class-addon.php:310
 #, php-format
 msgid "%s removed."
 msgstr ""
 
-#: includes/class-addon.php:266
+#: includes/class-addon.php:312
 msgid "+ Details"
 msgstr ""
 
-#: includes/class-addon.php:268
+#: includes/class-addon.php:314
 #, php-format
 msgid "Add %s to More details"
 msgstr ""
 
-#: includes/class-addon.php:270
+#: includes/class-addon.php:316
 #, php-format
 msgid "Move %s to More details"
 msgstr ""
 
-#: includes/class-addon.php:272
+#: includes/class-addon.php:318
 #, php-format
 msgid "Move %s to the columns"
 msgstr ""
 
-#: includes/class-addon.php:273
+#: includes/class-addon.php:319
 msgid "→ Details"
 msgstr ""
 
-#: includes/class-addon.php:274
+#: includes/class-addon.php:320
 msgid "← Column"
 msgstr ""
 
-#: includes/class-addon.php:275
+#: includes/class-addon.php:321
 msgid "No field: rows have no chevron."
 msgstr ""
 
-#: includes/class-addon.php:278
+#: includes/class-addon.php:324
 msgid "Drop-down filter"
 msgstr ""
 
-#: includes/class-addon.php:281
+#: includes/class-addon.php:327 includes/class-addon.php:552 includes/class-renderer.php:996
+msgid "Board"
+msgstr ""
+
+#: includes/class-addon.php:328
+msgid "Shown on the cards of the Board view (Kanban)."
+msgstr ""
+
+#: includes/class-addon.php:331
+msgid "Section title"
+msgstr ""
+
+#: includes/class-addon.php:332
+msgid "Section"
+msgstr ""
+
+#: includes/class-addon.php:333
+msgid "New section"
+msgstr ""
+
+#: includes/class-addon.php:334
+msgid "Choose a field"
+msgstr ""
+
+#: includes/class-addon.php:335
+msgid "Every field is already on the page."
+msgstr ""
+
+#: includes/class-addon.php:338
 msgid "Status column (statuses are set in the Statuses step)"
 msgstr ""
 
-#: includes/class-addon.php:282
+#: includes/class-addon.php:339
 msgid "Stored value"
 msgstr ""
 
-#: includes/class-addon.php:283
+#: includes/class-addon.php:340
 msgid "Label shown"
 msgstr ""
 
-#: includes/class-addon.php:284
+#: includes/class-addon.php:341
 msgid "Colour"
 msgstr ""
 
-#: includes/class-addon.php:285
+#: includes/class-addon.php:342
 msgid "Move up"
 msgstr ""
 
-#: includes/class-addon.php:286
+#: includes/class-addon.php:343
 msgid "Move down"
 msgstr ""
 
-#: includes/class-addon.php:287
+#: includes/class-addon.php:344
 msgid "Delete"
 msgstr ""
 
-#: includes/class-addon.php:288
+#: includes/class-addon.php:345
 msgid "Choose the field holding the status, then add the steps."
 msgstr ""
 
-#: includes/class-addon.php:291
+#: includes/class-addon.php:347
+msgid "Locked"
+msgstr ""
+
+#: includes/class-addon.php:350
+msgid "Final step"
+msgstr ""
+
+#: includes/class-addon.php:351
+msgid "Late after"
+msgstr ""
+
+#: includes/class-addon.php:352
+msgid "days"
+msgstr ""
+
+#: includes/class-addon.php:356
 msgid "Icon of the button"
 msgstr ""
 
-#: includes/class-addon.php:292
+#: includes/class-addon.php:357
 msgid "Use this picture"
 msgstr ""
 
-#: includes/class-addon.php:392
+#: includes/class-addon.php:457
 msgid "Appearance"
 msgstr ""
 
-#: includes/class-addon.php:393
-msgid "These settings apply to every list of the site. The colours and the rounding are only used by the EntryStage style. For finer changes, see \"Look and feel\" in the documentation (CSS variables and classes)."
+#: includes/class-addon.php:458
+msgid "These settings apply to every list of the site. The colours and the font are used by the styles only (not by Minimal and None); leave a colour empty to keep the one of the style. For finer changes, see \"Look and feel\" in the documentation (CSS variables and classes)."
 msgstr ""
 
-#: includes/class-addon.php:399
+#: includes/class-addon.php:464
 msgid "Style of the lists"
 msgstr ""
 
-#: includes/class-addon.php:404
-msgid "EntryStage: the look of the plugin, with the colours below"
+#: includes/class-addon.php:471
+msgid "Preview of the styles"
 msgstr ""
 
-#: includes/class-addon.php:408
-msgid "Minimal: layout only (columns, cards on phones, widths); colours, buttons and fonts come from your theme"
+#: includes/class-addon.php:480
+msgid "Font of the texts"
 msgstr ""
 
-#: includes/class-addon.php:412
-msgid "None: no stylesheet; you style the list entirely from your theme"
+#: includes/class-addon.php:481
+msgid "Fonts already installed on the computer of the visitor: nothing is loaded from another site."
 msgstr ""
 
-#: includes/class-addon.php:423
-msgid "Corner rounding (pixels, 0 to 24)"
-msgstr ""
-
-#: includes/class-addon.php:432
+#: includes/class-addon.php:490
 msgid "License"
 msgstr ""
 
-#: includes/class-addon.php:433
+#: includes/class-addon.php:491
 msgid "The license key gives access to automatic updates and support. All features work without it."
 msgstr ""
 
-#: includes/class-addon.php:438
+#: includes/class-addon.php:496
 msgid "License key"
 msgstr ""
 
-#: includes/class-addon.php:444 includes/class-atelier.php:653 includes/class-export.php:103 includes/class-settings.php:562
+#: includes/class-addon.php:502 includes/class-atelier.php:764 includes/class-export.php:103 includes/class-settings.php:604
 msgid "Status"
+msgstr ""
+
+#: includes/class-addon.php:526
+msgid "Minimal: layout only (columns, cards on phones, widths); colours, buttons and fonts come from your theme"
+msgstr ""
+
+#: includes/class-addon.php:530
+msgid "None: no stylesheet; you style the list entirely from your theme"
+msgstr ""
+
+#: includes/class-addon.php:543
+msgid "Editorial template"
+msgstr ""
+
+#: includes/class-addon.php:545
+msgid "Atelier template"
+msgstr ""
+
+#: includes/class-addon.php:546
+msgid "Studio template"
+msgstr ""
+
+#: includes/class-addon.php:547
+msgid "Night template"
+msgstr ""
+
+#: includes/class-addon.php:550 includes/class-renderer.php:995
+msgid "List"
+msgstr ""
+
+#: includes/class-addon.php:554
+msgid "Phone"
+msgstr ""
+
+#: includes/class-addon.php:565
+#, php-format
+msgid "Choose the style %s"
 msgstr ""
 
 #: includes/class-atelier.php:27
@@ -352,644 +445,768 @@ msgstr ""
 msgid "Columns"
 msgstr ""
 
-#: includes/class-atelier.php:36 includes/class-renderer.php:767
+#: includes/class-atelier.php:35
+msgid "Entry page"
+msgstr ""
+
+#: includes/class-atelier.php:39 includes/class-renderer.php:816
 msgid "Statuses"
 msgstr ""
 
-#: includes/class-atelier.php:39
+#: includes/class-atelier.php:42
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-atelier.php:78
+#: includes/class-atelier.php:81
 msgid "EntryStage · list workshop"
 msgstr ""
 
-#: includes/class-atelier.php:78
+#: includes/class-atelier.php:81 includes/class-atelier.php:81
 #, php-format
 msgid "List of \"%s\""
 msgstr ""
 
-#: includes/class-atelier.php:81
+#: includes/class-atelier.php:84
 msgid "List enabled"
 msgstr ""
 
-#: includes/class-atelier.php:85
+#: includes/class-atelier.php:88
 msgid "View the page"
 msgstr ""
 
-#: includes/class-atelier.php:87 includes/class-atelier.php:451
+#: includes/class-atelier.php:90 includes/class-atelier.php:524
 msgid "Save"
 msgstr ""
 
-#: includes/class-atelier.php:92 includes/class-atelier.php:93
+#: includes/class-atelier.php:95 includes/class-atelier.php:96
 msgid "EntryStage Pro"
 msgstr ""
 
-#: includes/class-atelier.php:94
+#: includes/class-atelier.php:97
 msgid "Follow every entry from start to finish."
 msgstr ""
 
-#: includes/class-atelier.php:96
+#: includes/class-atelier.php:99
 msgid "Available soon"
 msgstr ""
 
-#: includes/class-atelier.php:98 includes/class-settings.php:45
+#: includes/class-atelier.php:101 includes/class-settings.php:45
 msgid "More details"
 msgstr ""
 
-#: includes/class-atelier.php:99
+#: includes/class-atelier.php:102
 msgid "Hide this banner"
 msgstr ""
 
-#: includes/class-atelier.php:101
+#: includes/class-atelier.php:104
 msgid "Requests, registrations, applications, orders: give each entry a status of your own (for example Received, In progress, Done), shown as a coloured label. One click moves it to the next step, one tab per status counts what is waiting at each step, and every change is written in the notes of the entry. Your team sees at a glance what is left to do."
 msgstr ""
 
-#: includes/class-atelier.php:102
-msgid "Also included: More details under each row, bulk actions, CSV export, drop-down and date filters, PDF links (Gravity PDF), custom icons, shortcode conditions and priority support."
-msgstr ""
-
-#: includes/class-atelier.php:104
-msgid "Discover EntryStage Pro"
+#: includes/class-atelier.php:105
+msgid "At each step, e-mails can go out to the requester or to your team, late entries show in red, validated entries can be locked, and a webhook can notify Slack, Zapier or your other tools."
 msgstr ""
 
 #: includes/class-atelier.php:106
+msgid "Also included: More details under each row, bulk actions, CSV export, drop-down and date filters, PDF links (Gravity PDF), custom icons, shortcode conditions and priority support."
+msgstr ""
+
+#: includes/class-atelier.php:108
+msgid "Discover EntryStage Pro"
+msgstr ""
+
+#: includes/class-atelier.php:110
 msgid "EntryStage Pro will be available soon."
 msgstr ""
 
-#: includes/class-atelier.php:115
+#: includes/class-atelier.php:119
 msgid "The columns come from the field options of an earlier build (form editor). They are already in use; save this page to keep them here. The option has left the form editor."
 msgstr ""
 
-#: includes/class-atelier.php:119
+#: includes/class-atelier.php:123
 msgid "Steps"
 msgstr ""
 
-#: includes/class-atelier.php:130 includes/class-atelier.php:139
+#: includes/class-atelier.php:134 includes/class-atelier.php:143
 msgid "Who sees the list"
 msgstr ""
 
-#: includes/class-atelier.php:135
+#: includes/class-atelier.php:139
 msgid "Everyone"
 msgstr ""
 
-#: includes/class-atelier.php:136
+#: includes/class-atelier.php:140
 msgid "Logged-in users"
 msgstr ""
 
-#: includes/class-atelier.php:137
+#: includes/class-atelier.php:141
 msgid "Some roles"
 msgstr ""
 
-#: includes/class-atelier.php:141
+#: includes/class-atelier.php:145
 msgid "Roles that see the list"
 msgstr ""
 
-#: includes/class-atelier.php:148 includes/class-atelier.php:156 includes/class-block.php:112
+#: includes/class-atelier.php:152 includes/class-atelier.php:160 includes/class-block.php:112
 msgid "Entries shown"
 msgstr ""
 
-#: includes/class-atelier.php:153
+#: includes/class-atelier.php:157
 msgid "Their own entries"
 msgstr ""
 
-#: includes/class-atelier.php:154
+#: includes/class-atelier.php:158
 msgid "All entries"
 msgstr ""
 
-#: includes/class-atelier.php:158
+#: includes/class-atelier.php:162
 msgid "Each person sees only their own entries, and edits, duplicates and archives them. List managers see and handle every entry."
 msgstr ""
 
-#: includes/class-atelier.php:160
+#: includes/class-atelier.php:164
 msgid "Each person sees every entry (and its PDF), but edits, duplicates and archives only their own. List managers handle every entry."
 msgstr ""
 
-#: includes/class-atelier.php:163
+#: includes/class-atelier.php:167
 msgid "Each person sees every entry, but edits, duplicates and archives only their own. List managers handle every entry."
 msgstr ""
 
-#: includes/class-atelier.php:167
+#: includes/class-atelier.php:171
 msgid "List managers"
 msgstr ""
 
-#: includes/class-atelier.php:176
+#: includes/class-atelier.php:180
 msgid "Managers see and handle every entry. They alone can move an entry to the next step (arrow, bulk actions) and export the list to CSV. Administrators and users who can edit Gravity Forms entries are always managers."
 msgstr ""
 
-#: includes/class-atelier.php:179
+#: includes/class-atelier.php:183
 msgid "Managers see and handle every entry. Administrators and users who can edit Gravity Forms entries are always managers."
 msgstr ""
 
-#: includes/class-atelier.php:183
+#: includes/class-atelier.php:187
 msgid "Page of the form"
 msgstr ""
 
-#: includes/class-atelier.php:184
+#: includes/class-atelier.php:188
 msgid "Edit and Duplicate open the entry on this page"
 msgstr ""
 
-#: includes/class-atelier.php:188
+#: includes/class-atelier.php:192
 #, php-format
 msgid "Automatic: %s"
 msgstr ""
 
-#: includes/class-atelier.php:188
+#: includes/class-atelier.php:192
 msgid "Automatic"
 msgstr ""
 
-#: includes/class-atelier.php:197
+#: includes/class-atelier.php:201
 #, php-format
 msgid "Form found on the page \"%s\"."
 msgstr ""
 
-#: includes/class-atelier.php:199
+#: includes/class-atelier.php:203
 msgid "No page displaying this form was found: Edit and Duplicate stay hidden until one is chosen."
 msgstr ""
 
-#: includes/class-atelier.php:211
+#: includes/class-atelier.php:215
 msgid "Available fields"
 msgstr ""
 
-#: includes/class-atelier.php:212
+#: includes/class-atelier.php:216
 msgid "Find a field"
 msgstr ""
 
-#: includes/class-atelier.php:212
+#: includes/class-atelier.php:216
 msgid "Name, type or number…"
 msgstr ""
 
-#: includes/class-atelier.php:214
+#: includes/class-atelier.php:218
 #, php-format
 msgid "%s field in this form."
 msgid_plural "%s fields in this form."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-atelier.php:216
+#: includes/class-atelier.php:220
 msgid "HTML, Section, Page break, CAPTCHA, Password and Credit card fields are not offered."
 msgstr ""
 
-#: includes/class-atelier.php:219
+#: includes/class-atelier.php:223
 msgid "Columns of the list"
 msgstr ""
 
-#: includes/class-atelier.php:220
+#: includes/class-atelier.php:224
 #, php-format
 msgid "From left to right in the list. Width: for example 120px or 15%; empty: automatic. The Actions column always comes last; on phones each row becomes a card."
 msgstr ""
 
-#: includes/class-atelier.php:224
+#: includes/class-atelier.php:226
+msgid "\"Board\": the column also shows on the cards of the Board view (Kanban, Statuses step), in the same order; the first one is the title of the card. On for every new column; turn it off to keep a column in the list only."
+msgstr ""
+
+#: includes/class-atelier.php:231
 msgid "Shown under the row when it is opened: a click on the row (except on a link, a button or a box) or on the chevron, which is the real button and works with the keyboard. Loaded when opened, with the same rights as the list. Also added to the CSV export, after the columns."
 msgstr ""
 
-#: includes/class-atelier.php:227
+#: includes/class-atelier.php:233
+msgid "These fields are not shown on the cards of the Board view (Kanban)."
+msgstr ""
+
+#: includes/class-atelier.php:237
 msgid "Text of the chevron, closed"
 msgstr ""
 
-#: includes/class-atelier.php:228
+#: includes/class-atelier.php:238
 msgid "Text of the chevron, open"
 msgstr ""
 
-#: includes/class-atelier.php:229
+#: includes/class-atelier.php:239
 msgid "Read by screen readers and shown on hover."
 msgstr ""
 
-#: includes/class-atelier.php:243
+#: includes/class-atelier.php:253
+msgid "Page of an entry"
+msgstr ""
+
+#: includes/class-atelier.php:254
+msgid "Opened by the View button. Choose the fields to show, their order and their label, and group them under section titles. Empty values are left out, and so is a section title with no value under it. Without any field chosen, the page shows every field of the form."
+msgstr ""
+
+#: includes/class-atelier.php:256
+msgid "Field to add"
+msgstr ""
+
+#: includes/class-atelier.php:258
+msgid "+ Add the field"
+msgstr ""
+
+#: includes/class-atelier.php:259
+msgid "+ Add a section title"
+msgstr ""
+
+#: includes/class-atelier.php:260
+msgid "Add every field"
+msgstr ""
+
+#: includes/class-atelier.php:263
+msgid "No field chosen: every field of the form is shown."
+msgstr ""
+
+#: includes/class-atelier.php:265
+msgid "The history of the changes (Actions step) is shown under the fields, to the list managers."
+msgstr ""
+
+#: includes/class-atelier.php:275
 msgid "Buttons of each row"
 msgstr ""
 
-#: includes/class-atelier.php:245 includes/class-settings.php:59
+#: includes/class-atelier.php:277 includes/class-renderer.php:994 includes/class-settings.php:59
 msgid "View"
 msgstr ""
 
-#: includes/class-atelier.php:246 includes/class-settings.php:61
+#: includes/class-atelier.php:278 includes/class-settings.php:61
 msgid "Edit"
 msgstr ""
 
-#: includes/class-atelier.php:247 includes/class-settings.php:63
+#: includes/class-atelier.php:279 includes/class-settings.php:63
 msgid "Duplicate"
 msgstr ""
 
-#: includes/class-atelier.php:248 includes/class-settings.php:65
+#: includes/class-atelier.php:280 includes/class-settings.php:65
 msgid "Archive"
 msgstr ""
 
-#: includes/class-atelier.php:250 includes/class-settings.php:69
+#: includes/class-atelier.php:282 includes/class-settings.php:69
 msgid "PDF"
 msgstr ""
 
-#: includes/class-atelier.php:257
+#: includes/class-atelier.php:289
 #, php-format
 msgid "Label of the \"%s\" button"
 msgstr ""
 
-#: includes/class-atelier.php:264 includes/class-atelier.php:267
+#: includes/class-atelier.php:296 includes/class-atelier.php:299
 msgid "Next step"
 msgstr ""
 
-#: includes/class-atelier.php:264
+#: includes/class-atelier.php:296
 msgid "Set in the Statuses step"
 msgstr ""
 
-#: includes/class-atelier.php:273
+#: includes/class-atelier.php:305
 msgid "Icon: a square PNG or WebP picture with a transparent background, 48 × 48 pixels (shown at 18 pixels, sharp on high-resolution screens), from the media library. Without a picture, the built-in icon is used. A picture keeps its own colours: it does not take the colour of the list."
 msgstr ""
 
-#: includes/class-atelier.php:275
+#: includes/class-atelier.php:307
 msgid "Header of the actions column"
 msgstr ""
 
-#: includes/class-atelier.php:277 includes/class-atelier.php:286
+#: includes/class-atelier.php:309 includes/class-atelier.php:318
 msgid "How buttons look"
 msgstr ""
 
-#: includes/class-atelier.php:282
+#: includes/class-atelier.php:314
 msgid "Icons"
 msgstr ""
 
-#: includes/class-atelier.php:283
+#: includes/class-atelier.php:315
 msgid "Icons and labels"
 msgstr ""
 
-#: includes/class-atelier.php:284
+#: includes/class-atelier.php:316
 msgid "Labels"
 msgstr ""
 
-#: includes/class-atelier.php:288 includes/class-atelier.php:296
+#: includes/class-atelier.php:320 includes/class-atelier.php:328
 msgid "Archive means"
 msgstr ""
 
-#: includes/class-atelier.php:293
+#: includes/class-atelier.php:325
 msgid "Gravity Forms trash"
 msgstr ""
 
-#: includes/class-atelier.php:294
+#: includes/class-atelier.php:326
 msgid "Permanent deletion"
 msgstr ""
 
-#: includes/class-atelier.php:298
+#: includes/class-atelier.php:330
 msgid "Question before archiving (empty: none)"
 msgstr ""
 
-#: includes/class-atelier.php:301
+#: includes/class-atelier.php:333
 msgid "PDF (Gravity PDF)"
 msgstr ""
 
-#: includes/class-atelier.php:303
+#: includes/class-atelier.php:335
 msgid "Select a PDF"
 msgstr ""
 
-#: includes/class-atelier.php:309
+#: includes/class-atelier.php:341
 msgid "Install Gravity PDF to link the PDF of each entry."
 msgstr ""
 
-#: includes/class-atelier.php:314
+#: includes/class-atelier.php:346
 msgid "Notifications after an edit"
 msgstr ""
 
-#: includes/class-atelier.php:317
+#: includes/class-atelier.php:349
 msgid "Do not send them"
 msgstr ""
 
-#: includes/class-atelier.php:318
+#: includes/class-atelier.php:350
 msgid "Send them, as for a new submission"
 msgstr ""
 
-#: includes/class-atelier.php:323
+#: includes/class-atelier.php:355
 msgid "After an edit or a copy"
 msgstr ""
 
-#: includes/class-atelier.php:326
+#: includes/class-atelier.php:358
 msgid "Go back to the list"
 msgstr ""
 
-#: includes/class-atelier.php:327
+#: includes/class-atelier.php:359
 msgid "Show the form confirmation"
 msgstr ""
 
-#: includes/class-atelier.php:337
+#: includes/class-atelier.php:363
+msgid "History of the changes"
+msgstr ""
+
+#: includes/class-atelier.php:363
+msgid "Each change of status and each edit made from the list is written in the entry notes of Gravity Forms, with the changed fields (old and new value). The list managers see this history on the page of the entry."
+msgstr ""
+
+#: includes/class-atelier.php:372
 msgid "Workflow steps"
 msgstr ""
 
-#: includes/class-atelier.php:338 includes/class-renderer.php:785
+#: includes/class-atelier.php:373 includes/class-renderer.php:834
 msgid "No status"
 msgstr ""
 
-#: includes/class-atelier.php:344
+#: includes/class-atelier.php:379
 msgid "Field holding the status"
 msgstr ""
 
-#: includes/class-atelier.php:345
+#: includes/class-atelier.php:380
 msgid "A Hidden field is a good choice. The order of the steps is the order of the workflow."
 msgstr ""
 
-#: includes/class-atelier.php:346
+#: includes/class-atelier.php:381
 msgid "Every new entry starts at the first step. An entry edited from the list keeps its status."
 msgstr ""
 
-#: includes/class-atelier.php:350
+#: includes/class-atelier.php:385
 #, php-format
 msgid "%1$s entry has no status. It is in no tab until it gets one."
 msgid_plural "%1$s entries have no status. They are in no tab until they get one."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-atelier.php:352
+#: includes/class-atelier.php:387
 #, php-format
 msgid "Give them the step \"%s\""
 msgstr ""
 
-#: includes/class-atelier.php:355
+#: includes/class-atelier.php:390
 msgid "+ Add a step"
 msgstr ""
 
-#: includes/class-atelier.php:357
+#: includes/class-atelier.php:392
 msgid "One tab per status, with counters"
 msgstr ""
 
-#: includes/class-atelier.php:358
+#: includes/class-atelier.php:393
 msgid "\"Next step\" button on each row (managers)"
 msgstr ""
 
-#: includes/class-atelier.php:362
+#: includes/class-atelier.php:395
+msgid "\"Board\" view (Kanban)"
+msgstr ""
+
+#: includes/class-atelier.php:395
+msgid "A List / Board switch above the list. The board shows one column per step, with the entries as cards. The managers move a card to another column by dragging it, or with its \"Move to\" menu (keyboard, phones)."
+msgstr ""
+
+#: includes/class-atelier.php:400
 msgid "Where the status is shown"
 msgstr ""
 
-#: includes/class-atelier.php:365
+#: includes/class-atelier.php:403
 msgid "Above the actions"
 msgstr ""
 
-#: includes/class-atelier.php:366
+#: includes/class-atelier.php:404
 msgid "In its own column"
 msgstr ""
 
-#: includes/class-atelier.php:369
+#: includes/class-atelier.php:407
 msgid "Above the actions: the label of the step, then the arrow to move to the next step with the other icons. The Status column of the Columns and details step is then not shown."
 msgstr ""
 
-#: includes/class-atelier.php:377
-msgid "Sorting and pages"
+#: includes/class-atelier.php:409
+msgid "Locked step: the entries at this step can no longer be edited or archived by the people who are not list managers (they can still view and duplicate them)."
 msgstr ""
 
-#: includes/class-atelier.php:379 includes/class-atelier.php:851 includes/class-block.php:117 includes/class-renderer.php:931
-msgid "Rows per page"
-msgstr ""
-
-#: includes/class-atelier.php:382 includes/class-export.php:97
-msgid "Entry ID"
-msgstr ""
-
-#: includes/class-atelier.php:393
-msgid "Initial sort"
-msgstr ""
-
-#: includes/class-atelier.php:398
-msgid "Initial sort: date, entry ID or one of the columns of the list (save after changing the columns to see them here)."
-msgstr ""
-
-#: includes/class-atelier.php:403
-msgid "Newest / Z to A first"
-msgstr ""
-
-#: includes/class-atelier.php:404
-msgid "Oldest / A to Z first"
-msgstr ""
-
-#: includes/class-atelier.php:406
-msgid "Sort direction"
-msgstr ""
-
-#: includes/class-atelier.php:408
-msgid "Text when there is no entry"
-msgstr ""
-
-#: includes/class-atelier.php:409 includes/class-atelier.php:417
-msgid "Thumbnail size"
+#: includes/class-atelier.php:413
+msgid "Deadlines and colours"
 msgstr ""
 
 #: includes/class-atelier.php:414
-msgid "48 px"
+msgid "An entry is late when it stays at a step longer than the delay of that step (in days, set on each step), or once the date of the field below has passed. An entry at a final step is never late. Late rows are shown in red, with the label \"Late\"."
 msgstr ""
 
 #: includes/class-atelier.php:415
-msgid "96 px"
-msgstr ""
-
-#: includes/class-atelier.php:419
-msgid "Thumbnails load the original picture: keep 25 rows per page or fewer when a column shows pictures."
+msgid "No due date"
 msgstr ""
 
 #: includes/class-atelier.php:421
-msgid "Tools above the list"
+msgid "Due date of the entry"
 msgstr ""
 
 #: includes/class-atelier.php:422
-msgid "Search box"
+msgid "Rows tinted with the colour of their status"
 msgstr ""
 
-#: includes/class-atelier.php:424
-msgid "Print button"
+#: includes/class-atelier.php:422
+msgid "A very light background of the colour of the step."
 msgstr ""
 
-#: includes/class-atelier.php:424
-msgid "Opens a printable page with the entries matching the filters, every page (at most 500)."
-msgstr ""
-
-#: includes/class-atelier.php:427
-msgid "Date range filter"
+#: includes/class-atelier.php:426
+msgid "When the status changes"
 msgstr ""
 
 #: includes/class-atelier.php:430
-msgid "CSV export of the filtered entries (managers)"
+msgid "E-mails: in the Notifications of this form, choose the event \"EntryStage: status changed\". Recipients, subject and message are set as for any notification; use the conditions of the notification to send it only for some steps (for example when the status field is \"Done\"). Merge tags: {estg_status} (new step) and {estg_status_previous}."
 msgstr ""
 
-#: includes/class-atelier.php:433
-msgid "Bulk actions: archive, duplicate or change the status of several rows"
+#: includes/class-atelier.php:431
+msgid "Open the notifications of this form"
+msgstr ""
+
+#: includes/class-atelier.php:434
+msgid "Webhook address (https)"
+msgstr ""
+
+#: includes/class-atelier.php:435
+msgid "Secret key (optional)"
 msgstr ""
 
 #: includes/class-atelier.php:436
-msgid "Drop-down filters are set per column, in the Columns and details step."
+msgid "At each change of status, the address receives the entry number, the form, the previous and the new step, in JSON (with a \"text\" line readable by Slack). With a secret key, the call carries the header X-EntryStage-Signature (HMAC-SHA256 of the body). Only https addresses are accepted; the addresses of the local network are refused when sending."
 msgstr ""
 
-#: includes/class-atelier.php:439
-msgid "Files"
+#: includes/class-atelier.php:447
+msgid "Sorting and pages"
 msgstr ""
 
-#: includes/class-atelier.php:440
-msgid "Downloads only for people who may see the entry"
+#: includes/class-atelier.php:449 includes/class-atelier.php:962 includes/class-block.php:117 includes/class-renderer.php:1168
+msgid "Rows per page"
 msgstr ""
 
-#: includes/class-atelier.php:440
-msgid "Off by default. Logged-in users only; the check covers the Gravity Forms download links of this form."
+#: includes/class-atelier.php:452 includes/class-export.php:97
+msgid "Entry ID"
 msgstr ""
 
-#: includes/class-atelier.php:441
-msgid "File links in notifications will no longer open for a recipient who is not logged in, and visitors of a public list will not see the thumbnails."
+#: includes/class-atelier.php:463
+msgid "Initial sort"
 msgstr ""
 
 #: includes/class-atelier.php:468
+msgid "Initial sort: date, entry ID or one of the columns of the list (save after changing the columns to see them here)."
+msgstr ""
+
+#: includes/class-atelier.php:473
+msgid "Newest / Z to A first"
+msgstr ""
+
+#: includes/class-atelier.php:474
+msgid "Oldest / A to Z first"
+msgstr ""
+
+#: includes/class-atelier.php:476
+msgid "Sort direction"
+msgstr ""
+
+#: includes/class-atelier.php:478
+msgid "Text when there is no entry"
+msgstr ""
+
+#: includes/class-atelier.php:479 includes/class-atelier.php:487
+msgid "Thumbnail size"
+msgstr ""
+
+#: includes/class-atelier.php:484
+msgid "48 px"
+msgstr ""
+
+#: includes/class-atelier.php:485
+msgid "96 px"
+msgstr ""
+
+#: includes/class-atelier.php:489
+msgid "Thumbnails load the original picture: keep 25 rows per page or fewer when a column shows pictures."
+msgstr ""
+
+#: includes/class-atelier.php:491
+msgid "Tools above the list"
+msgstr ""
+
+#: includes/class-atelier.php:492
+msgid "Search box"
+msgstr ""
+
+#: includes/class-atelier.php:494
+msgid "Without reloading the page"
+msgstr ""
+
+#: includes/class-atelier.php:494
+msgid "Search, sorting, pages and tabs update the list in place. The address of the page follows: it can be shared or reloaded."
+msgstr ""
+
+#: includes/class-atelier.php:497
+msgid "Print button"
+msgstr ""
+
+#: includes/class-atelier.php:497
+msgid "Opens a printable page with the entries matching the filters, every page (at most 500)."
+msgstr ""
+
+#: includes/class-atelier.php:500
+msgid "Date range filter"
+msgstr ""
+
+#: includes/class-atelier.php:503
+msgid "CSV export of the filtered entries (managers)"
+msgstr ""
+
+#: includes/class-atelier.php:506
+msgid "Bulk actions: archive, duplicate or change the status of several rows"
+msgstr ""
+
+#: includes/class-atelier.php:509
+msgid "Drop-down filters are set per column, in the Columns and details step."
+msgstr ""
+
+#: includes/class-atelier.php:512
+msgid "Files"
+msgstr ""
+
+#: includes/class-atelier.php:513
+msgid "Downloads only for people who may see the entry"
+msgstr ""
+
+#: includes/class-atelier.php:513
+msgid "Off by default. Logged-in users only; the check covers the Gravity Forms download links of this form."
+msgstr ""
+
+#: includes/class-atelier.php:514
+msgid "File links in notifications will no longer open for a recipient who is not logged in, and visitors of a public list will not see the thumbnails."
+msgstr ""
+
+#: includes/class-atelier.php:541
 msgid "You are not allowed to change these settings."
 msgstr ""
 
-#: includes/class-atelier.php:591
+#: includes/class-atelier.php:685
 msgid "The settings could not be saved."
 msgstr ""
 
-#: includes/class-atelier.php:599
+#: includes/class-atelier.php:693
 #, php-format
 msgid "Settings saved. %s entry was given the first step."
 msgid_plural "Settings saved. %s entries were given the first step."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-atelier.php:602
+#: includes/class-atelier.php:696
 msgid "Settings saved."
 msgstr ""
 
-#: includes/class-atelier.php:654 includes/class-export.php:106 includes/class-settings.php:574
+#: includes/class-atelier.php:765 includes/class-export.php:106 includes/class-settings.php:616
 msgid "Date"
 msgstr ""
 
-#: includes/class-atelier.php:818
+#: includes/class-atelier.php:929
 msgid "Build the shortcode"
 msgstr ""
 
-#: includes/class-atelier.php:820
+#: includes/class-atelier.php:931
 msgid "Paste it in a Shortcode block of any page. The options only narrow what this list shows: the rights stay those of the Access step, and the CSV export holds the same entries as the list."
 msgstr ""
 
-#: includes/class-atelier.php:823
+#: includes/class-atelier.php:934
 msgid "Paste it in a Shortcode block of any page. The options only narrow what this list shows: the rights stay those of the Access step."
 msgstr ""
 
-#: includes/class-atelier.php:826
+#: includes/class-atelier.php:937
 msgid "Entries of"
 msgstr ""
 
-#: includes/class-atelier.php:826
+#: includes/class-atelier.php:937
 msgid "Everyone (as set in Access)"
 msgstr ""
 
-#: includes/class-atelier.php:826
+#: includes/class-atelier.php:937
 msgid "The logged-in person only"
 msgstr ""
 
-#: includes/class-atelier.php:826
+#: includes/class-atelier.php:937
 msgid "One user (ID)…"
 msgstr ""
 
-#: includes/class-atelier.php:827 includes/class-block.php:116
+#: includes/class-atelier.php:938 includes/class-block.php:116
 msgid "User ID"
 msgstr ""
 
-#: includes/class-atelier.php:838
+#: includes/class-atelier.php:949
 #, php-format
 msgid "Condition %d: field number"
 msgstr ""
 
-#: includes/class-atelier.php:838
+#: includes/class-atelier.php:949
 msgid "Type a name or a number"
 msgstr ""
 
-#: includes/class-atelier.php:839
+#: includes/class-atelier.php:950
 msgid "has exactly the value"
 msgstr ""
 
-#: includes/class-atelier.php:842
+#: includes/class-atelier.php:953
 msgid "Status tab opened first"
 msgstr ""
 
-#: includes/class-atelier.php:842 includes/class-renderer.php:763 includes/class-renderer.php:853
+#: includes/class-atelier.php:953 includes/class-renderer.php:812 includes/class-renderer.php:906
 msgid "All"
 msgstr ""
 
-#: includes/class-atelier.php:852 includes/class-block.php:119
+#: includes/class-atelier.php:963 includes/class-block.php:119
 msgid "Page of the form (for Edit and Duplicate)"
 msgstr ""
 
-#: includes/class-atelier.php:852
+#: includes/class-atelier.php:963
 msgid "The one chosen in Access"
 msgstr ""
 
-#: includes/class-atelier.php:857
+#: includes/class-atelier.php:968
 msgid "Edit and Duplicate open the Gravity Forms form filled in with the entry, so they need a page that shows this form. By default it is the page chosen in the Access step; choose another one only when this list must send people to a different page (for example one page per agency, each showing the form)."
 msgstr ""
 
-#: includes/class-atelier.php:863
+#: includes/class-atelier.php:974
 msgid "Examples"
 msgstr ""
 
-#: includes/class-atelier.php:865
+#: includes/class-atelier.php:976
 msgid "The list, with the settings of this form."
 msgstr ""
 
-#: includes/class-atelier.php:866
+#: includes/class-atelier.php:977
 msgid "A \"My entries\" page: each logged-in person sees only their own entries, even when the Access step shows all entries."
 msgstr ""
 
-#: includes/class-atelier.php:877
+#: includes/class-atelier.php:988
 #, php-format
 msgid "Only the entries whose field \"%1$s\" is \"%2$s\" (stored value). Add field2 / value2 for a second condition."
 msgstr ""
 
-#: includes/class-atelier.php:887
+#: includes/class-atelier.php:998
 #, php-format
 msgid "Opens on the tab \"%s\"; the other tabs stay available."
 msgstr ""
 
-#: includes/class-atelier.php:891
+#: includes/class-atelier.php:1002
 msgid "50 rows per page on this page only."
 msgstr ""
 
-#: includes/class-atelier.php:892
+#: includes/class-atelier.php:1003
 msgid "Only the entries created by the user with ID 5."
 msgstr ""
 
-#: includes/class-atelier.php:906
+#: includes/class-atelier.php:1017
 #, php-format
 msgid "Personal space: one tab per form (here forms %1$d and %2$d), with the entries of the person logged in."
 msgstr ""
 
-#: includes/class-atelier.php:907
+#: includes/class-atelier.php:1018
 msgid "Personal space: one tab per form, with the entries of the person logged in. Replace 12 with the ID of another form whose list is enabled."
 msgstr ""
 
-#: includes/class-atelier.php:911
+#: includes/class-atelier.php:1022
 msgid "field also accepts entry properties such as payment_status, is_starred or created_by."
 msgstr ""
 
-#: includes/class-atelier.php:918
+#: includes/class-atelier.php:1029
 msgid "Lists of different forms can be shown on the same page."
 msgstr ""
 
-#: includes/class-atelier.php:938
+#: includes/class-atelier.php:1049
 #, php-format
 msgid "Choose the icon of \"%s\""
 msgstr ""
 
-#: includes/class-atelier.php:938
+#: includes/class-atelier.php:1049
 msgid "Icon…"
 msgstr ""
 
-#: includes/class-atelier.php:940
+#: includes/class-atelier.php:1051
 #, php-format
 msgid "Back to the built-in icon of \"%s\""
 msgstr ""
 
-#: includes/class-atelier.php:940
+#: includes/class-atelier.php:1051
 msgid "Built-in icon"
 msgstr ""
 
-#: includes/class-atelier.php:950
+#: includes/class-atelier.php:1061
 msgid "A list: columns on each row, details under the opened row"
 msgstr ""
 
-#: includes/class-atelier.php:960
+#: includes/class-atelier.php:1071
 msgid "Columns: shown on every row, in the order chosen below."
 msgstr ""
 
-#: includes/class-atelier.php:962
+#: includes/class-atelier.php:1073
 #, php-format
 msgid "%s: shown under the row when it is opened (click on the row or on the chevron)."
 msgstr ""
@@ -1074,7 +1291,7 @@ msgstr ""
 msgid "This entry no longer exists."
 msgstr ""
 
-#: includes/class-details.php:55 includes/class-renderer.php:997
+#: includes/class-details.php:55 includes/class-renderer.php:1234
 msgid "This action is not allowed."
 msgstr ""
 
@@ -1104,7 +1321,7 @@ msgstr ""
 msgid "This value is already used by another entry."
 msgstr ""
 
-#: includes/class-editor.php:504
+#: includes/class-editor.php:512
 msgid "Entry edited from the entry list."
 msgstr ""
 
@@ -1130,91 +1347,112 @@ msgstr ""
 msgid "%s (calculated)"
 msgstr ""
 
-#: includes/class-fields.php:111
+#: includes/class-fields.php:115
 msgid "File name (link)"
 msgstr ""
 
-#: includes/class-fields.php:112
+#: includes/class-fields.php:116
 msgid "Thumbnail (pictures)"
 msgstr ""
 
-#: includes/class-fields.php:113
+#: includes/class-fields.php:117
 msgid "Download button"
 msgstr ""
 
-#: includes/class-fields.php:115
+#: includes/class-fields.php:119
 msgid "Thumbnail"
 msgstr ""
 
-#: includes/class-fields.php:120
+#: includes/class-fields.php:124
 msgid "Label of the choice"
 msgstr ""
 
-#: includes/class-fields.php:122
+#: includes/class-fields.php:126
 msgid "Whole field"
 msgstr ""
 
-#: includes/class-fields.php:124
+#: includes/class-fields.php:128
 msgid "Value as entered"
 msgstr ""
 
-#: includes/class-fields.php:133
+#: includes/class-fields.php:137
 #, php-format
 msgid "Only: %s"
 msgstr ""
 
-#: includes/class-fields.php:137
+#: includes/class-fields.php:141
 msgid "Stored value of the choice"
 msgstr ""
 
-#: includes/class-fields.php:140
+#: includes/class-fields.php:144
 msgid "Beginning of the text"
 msgstr ""
 
-#: includes/class-fields.php:200
+#: includes/class-fields.php:204
 msgid "Files cannot be sorted."
 msgstr ""
 
-#: includes/class-fields.php:202 includes/class-fields.php:204
+#: includes/class-fields.php:206 includes/class-fields.php:208
 msgid "Several values per entry: no sorting."
 msgstr ""
 
-#: includes/class-fields.php:204
+#: includes/class-fields.php:208
 msgid "Choose one part (for example the last name) to sort."
 msgstr ""
 
-#: includes/class-fields.php:208
+#: includes/class-fields.php:212
 msgid "Filters exist for drop-downs and radio buttons only."
 msgstr ""
 
-#: includes/class-fields.php:220
+#: includes/class-fields.php:224
 msgid "Administrative field: everyone who sees the list will see it."
 msgstr ""
 
-#: includes/class-fields.php:223
+#: includes/class-fields.php:227
 msgid "Hidden field: everyone who sees the list will see it."
 msgstr ""
 
-#: includes/class-fields.php:266
+#: includes/class-fields.php:270
 msgid "File"
 msgstr ""
 
-#: includes/class-fields.php:393
+#: includes/class-fields.php:397
 #, php-format
 msgid "Open %s"
 msgstr ""
 
-#: includes/class-fields.php:402
+#: includes/class-fields.php:406
 msgid "Download"
 msgstr ""
 
-#: includes/class-fields.php:411
+#: includes/class-fields.php:415
 #, php-format
 msgid "+%d"
 msgstr ""
 
-#: includes/class-fields.php:437
+#: includes/class-fields.php:441
 msgid "Signature"
+msgstr ""
+
+#: includes/class-history.php:55
+#, php-format
+msgid "%1$s: %2$s → %3$s"
+msgstr ""
+
+#: includes/class-history.php:55 includes/class-history.php:55
+msgid "(empty)"
+msgstr ""
+
+#: includes/class-history.php:58
+msgid "No field was changed."
+msgstr ""
+
+#: includes/class-history.php:148
+msgid "History"
+msgstr ""
+
+#: includes/class-history.php:150
+msgid "No change made from the list yet."
 msgstr ""
 
 #: includes/class-license.php:120
@@ -1246,6 +1484,18 @@ msgstr ""
 msgid "This license key is not valid for this site."
 msgstr ""
 
+#: includes/class-notify.php:40
+msgid "EntryStage: status changed"
+msgstr ""
+
+#: includes/class-notify.php:56
+msgid "Status (EntryStage)"
+msgstr ""
+
+#: includes/class-notify.php:60
+msgid "Previous status (EntryStage)"
+msgstr ""
+
 #: includes/class-renderer.php:58 includes/class-renderer.php:119
 msgid "Please log in to see your entries."
 msgstr ""
@@ -1254,11 +1504,11 @@ msgstr ""
 msgid "Forms"
 msgstr ""
 
-#: includes/class-renderer.php:183 includes/class-renderer.php:886
+#: includes/class-renderer.php:183 includes/class-renderer.php:944
 msgid "Print"
 msgstr ""
 
-#: includes/class-renderer.php:184 includes/class-renderer.php:1018
+#: includes/class-renderer.php:184 includes/class-renderer.php:1255
 msgid "Back to the list"
 msgstr ""
 
@@ -1267,7 +1517,7 @@ msgstr ""
 msgid "Printed on %s"
 msgstr ""
 
-#: includes/class-renderer.php:190 includes/class-renderer.php:950
+#: includes/class-renderer.php:190 includes/class-renderer.php:1187
 #, php-format
 msgid "%s entry"
 msgid_plural "%s entries"
@@ -1284,122 +1534,140 @@ msgstr ""
 msgid "Only the first %d entries are printed. Narrow the list with the filters to print the others."
 msgstr ""
 
-#: includes/class-renderer.php:286
+#: includes/class-renderer.php:295
 msgid "Edit and Duplicate are hidden: no page displaying this form was found. Choose it in the form settings, EntryStage tab, \"Page containing the form\"."
 msgstr ""
 
-#: includes/class-renderer.php:308 includes/class-renderer.php:310
+#: includes/class-renderer.php:325 includes/class-renderer.php:327
 msgid "Bulk actions"
 msgstr ""
 
-#: includes/class-renderer.php:309
+#: includes/class-renderer.php:326
 msgid "Bulk action"
 msgstr ""
 
-#: includes/class-renderer.php:314
+#: includes/class-renderer.php:331
 msgid "Apply"
 msgstr ""
 
-#: includes/class-renderer.php:350
+#: includes/class-renderer.php:367
 msgid "Select all"
 msgstr ""
 
-#: includes/class-renderer.php:402
+#: includes/class-renderer.php:432
 #, php-format
 msgid "Select entry %d"
 msgstr ""
 
-#: includes/class-renderer.php:433
+#: includes/class-renderer.php:463
 #, php-format
 msgid "%1$s: entry %2$d"
 msgstr ""
 
-#: includes/class-renderer.php:512
+#: includes/class-renderer.php:524 includes/class-renderer.php:1096
+msgid "Late"
+msgstr ""
+
+#: includes/class-renderer.php:559 includes/class-renderer.php:1137
 #, php-format
 msgid "Move to \"%s\""
 msgstr ""
 
-#: includes/class-renderer.php:720
+#: includes/class-renderer.php:769
 #, php-format
 msgid "Set status: %s"
 msgstr ""
 
-#: includes/class-renderer.php:785
+#: includes/class-renderer.php:834
 msgid "The \"next step\" button moves them to the first step."
 msgstr ""
 
-#: includes/class-renderer.php:848
+#: includes/class-renderer.php:901
 msgid "Search"
 msgstr ""
 
-#: includes/class-renderer.php:848
+#: includes/class-renderer.php:901
 msgid "A word, a name…"
 msgstr ""
 
-#: includes/class-renderer.php:861
+#: includes/class-renderer.php:914
 msgid "From"
 msgstr ""
 
-#: includes/class-renderer.php:862
+#: includes/class-renderer.php:915
 msgid "To"
 msgstr ""
 
-#: includes/class-renderer.php:865
+#: includes/class-renderer.php:918
 msgid "Filter"
 msgstr ""
 
-#: includes/class-renderer.php:877
+#: includes/class-renderer.php:930
 msgid "Clear the filters"
 msgstr ""
 
-#: includes/class-renderer.php:886 includes/class-renderer.php:899
+#: includes/class-renderer.php:944 includes/class-renderer.php:957
 msgid "Entries matching the filters, every page"
 msgstr ""
 
-#: includes/class-renderer.php:899
+#: includes/class-renderer.php:957
 msgid "Export CSV"
 msgstr ""
 
-#: includes/class-renderer.php:935
+#: includes/class-renderer.php:1056
+msgid "No entry"
+msgstr ""
+
+#: includes/class-renderer.php:1071
+#, php-format
+msgid "%s more: see them in the list"
+msgstr ""
+
+#: includes/class-renderer.php:1112 includes/class-renderer.php:1256
+#, php-format
+msgid "Entry #%d"
+msgstr ""
+
+#: includes/class-renderer.php:1134
+#, php-format
+msgid "Move entry %d to"
+msgstr ""
+
+#: includes/class-renderer.php:1139 includes/class-renderer.php:1172
 msgid "OK"
 msgstr ""
 
-#: includes/class-renderer.php:952
+#: includes/class-renderer.php:1189
 msgid "Pages"
 msgstr ""
 
-#: includes/class-renderer.php:989
+#: includes/class-renderer.php:1226
 #, php-format
 msgid "%d entry archived."
 msgid_plural "%d entries archived."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-renderer.php:991
+#: includes/class-renderer.php:1228
 #, php-format
 msgid "%d entry duplicated."
 msgid_plural "%d entries duplicated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-renderer.php:994
+#: includes/class-renderer.php:1231
 #, php-format
 msgid "Status updated for %d entry."
 msgid_plural "Status updated for %d entries."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-renderer.php:996
+#: includes/class-renderer.php:1233
 msgid "Entry updated."
 msgstr ""
 
-#: includes/class-renderer.php:998
+#: includes/class-renderer.php:1235
 msgid "No entry selected."
-msgstr ""
-
-#: includes/class-renderer.php:1019
-#, php-format
-msgid "Entry #%d"
 msgstr ""
 
 #: includes/class-settings.php:40
@@ -1414,9 +1682,14 @@ msgstr ""
 msgid "Archive this entry?"
 msgstr ""
 
-#: includes/class-statuses.php:124
+#: includes/class-statuses.php:140
 #, php-format
 msgid "Status changed from \"%1$s\" to \"%2$s\" from the entry list."
+msgstr ""
+
+#: includes/class-webhook.php:64
+#, php-format
+msgid "%1$s, entry #%2$d: %3$s → %4$s"
 msgstr ""
 
 #: entrystage.php

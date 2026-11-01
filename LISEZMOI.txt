@@ -2,7 +2,7 @@
 Mots-clés : gravity forms, entrées, site, liste, modification
 Nécessite au moins : WordPress 6.2
 Nécessite PHP : 7.4
-Version stable : 1.0.0
+Version stable : 1.1.0
 Licence : GPLv2 ou ultérieure
 URI de la licence : https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Tout se règle dans Gravity Forms, dans un onglet de réglages par formulaire pr
 * Modifier une entrée dans le formulaire d'origine : le formulaire s'ouvre déjà rempli et les changements sont enregistrés dans la même entrée.
 * Dupliquer une entrée : le formulaire s'ouvre rempli et une nouvelle entrée est créée.
 * Archiver une entrée (placée dans la corbeille de Gravity Forms, ou supprimée définitivement si vous le préférez).
-* Rechercher dans la liste.
+* Rechercher dans la liste, la trier et changer de page sans recharger la page.
 
 **Pour vous**
 
@@ -30,14 +30,14 @@ Tout se règle dans Gravity Forms, dans un onglet de réglages par formulaire pr
 * Un bloc « Liste EntryStage » pour l'éditeur de blocs, avec aperçu, en plus du code court.
 * Un espace personnel : plusieurs formulaires sur une page, un onglet par formulaire avec son nombre d'entrées, avec `[entrystage forms="12,15" user="current"]`.
 * Un bouton Imprimer : une page propre à imprimer, avec les entrées qui répondent aux filtres.
-* Trois apparences : le style EntryStage avec vos couleurs, un style minimal qui reprend l'aspect de votre thème, ou aucun style.
+* Trois apparences : le style Éditorial avec vos couleurs et votre police, un style minimal qui reprend l'aspect de votre thème, ou aucun style.
 * Protection facultative des liens de fichiers d'un formulaire : seules les personnes qui peuvent voir l'entrée téléchargent ses fichiers.
 
 **EntryStage Pro**
 
-Suivez chaque entrée du début à la fin. Demandes, inscriptions, candidatures, commandes : avec EntryStage Pro, chaque entrée reçoit un statut que vous définissez (par exemple Reçue, En cours, Terminée), affiché en étiquette de couleur. Un clic la fait passer à l'étape suivante, un onglet par statut compte ce qui attend à chaque étape, et chaque changement est inscrit dans les notes de l'entrée. Votre équipe voit d'un coup d'œil ce qu'il reste à faire.
+Suivez chaque entrée du début à la fin. Demandes, inscriptions, candidatures, commandes : avec EntryStage Pro, chaque entrée reçoit un statut que vous définissez (Reçue, En cours, Terminée…), affiché en étiquette de couleur, avec un onglet par statut et un bouton « étape suivante ». Des e-mails peuvent partir à chaque étape, les entrées en retard s'affichent en rouge, une entrée validée peut être verrouillée, un tableau (Kanban) fait passer les entrées d'une étape à l'autre, l'historique des modifications est gardé, et un webhook peut prévenir Slack ou vos autres outils.
 
-Également inclus : Plus de détails sous chaque ligne, actions groupées, export CSV, filtres déroulants et par dates, liens PDF avec Gravity PDF, icônes personnalisées, conditions du code court et support prioritaire.
+Également inclus : Plus de détails sous chaque ligne, actions groupées, export CSV, filtres déroulants et par dates, liens PDF, icônes personnalisées, conditions du code court et support prioritaire.
 EntryStage Pro sera bientôt disponible. Elle remplacera cette extension en gardant tous vos réglages.
 
 **Prérequis**
@@ -147,6 +147,8 @@ Ces options limitent seulement ce que la liste affiche. Les boutons suivent touj
 
 Cliquez sur le titre d'une colonne pour trier ; cliquez de nouveau pour inverser. Le tri initial, son sens et le nombre d'entrées par page se choisissent dans les réglages. Les visiteurs peuvent changer le nombre d'entrées par page (10, 25, 50 ou 100) en bas de la liste, à côté de la pagination.
 
+Sans rechargement de la page (activé par défaut ; étape Affichage, Outils au-dessus de la liste) : la recherche, le tri, les pages, le nombre de lignes par page et les onglets mettent la liste à jour sur place. L'adresse de la page suit, elle peut donc être partagée ou rechargée, et le bouton Précédent revient à l'état précédent de la liste. Sur les sites dont le thème utilise le routeur de pages de WordPress (API Interactivity, par exemple certains thèmes de blocs), l'adresse est remplacée, et Précédent revient à la page d'avant. Sans JavaScript, ou si la mise à jour échoue, la page se recharge simplement. Les boutons comme Archiver, Modifier, Exporter ou Imprimer ouvrent toujours leur page.
+
 = Imprimer =
 
 Activez « Bouton Imprimer » dans les réglages du formulaire (étape Affichage, Outils au-dessus de la liste). Le bouton ouvre une page à imprimer avec les entrées qui répondent à la recherche et aux filtres, toutes pages comprises (500 au plus), dans l'ordre de la liste, sans boutons ; la fenêtre d'impression du navigateur s'ouvre d'elle-même. La page indique le titre de la page, la date d'impression, le nombre d'entrées et la recherche utilisée. Sur papier, seule la liste est imprimée, sans l'en-tête, les menus ni le pied de page du thème.
@@ -188,12 +190,13 @@ Boutons : dans les réglages de chaque formulaire, choisissez si les boutons d'a
 Sans code, dans Formulaires > Réglages > EntryStage > Apparence (pour toutes les listes du site) :
 
 * Style des listes :
-  * EntryStage : l'aspect de l'extension, avec les couleurs choisies en dessous ;
+  * Template Éditorial : sans cadre, en-têtes en petites capitales, filet marqué en tête du tableau, onglets et champs soulignés, statuts en point de couleur ;
+  * EntryStage Pro ajoute trois autres templates : Atelier, Studio et Nuit ;
   * Minimal : la mise en page seulement (colonnes, fiches sur téléphone, largeurs, colonne Actions limitée à 25 %) ; les couleurs, les boutons et les polices viennent de votre thème, les lignes prennent une teinte neutre tirée de la couleur du texte ;
   * Aucun : pas de feuille de style ; vous habillez la liste entièrement depuis votre thème.
-  Un site qui avait décoché l'ancienne case « Utiliser la feuille de style de l'extension » passe sur « Aucun ».
-* Couleurs (style EntryStage) : couleur principale, lignes, fond d'une ligne sur deux, texte secondaire, Archiver et erreurs. Chaque sélecteur a un bouton pour revenir à la couleur d'origine.
-* Arrondi des angles (style EntryStage) : de 0 (angles droits) à 24 pixels.
+  Un site qui avait décoché l'ancienne case « Utiliser la feuille de style de l'extension » passe sur « Aucun » ; l'ancien style « EntryStage » devient « Éditorial ».
+* Couleurs (styles seulement) : couleur principale, couleur de fond, lignes. Laissez une couleur vide pour garder celle du style.
+* Police des textes (styles seulement) : celle du style, celle du thème, ou un des jeux de polices déjà installées sur l'ordinateur du visiteur (système, humaniste, géométrique, serif classique). Aucune police n'est chargée depuis un autre site.
 
 Pour aller plus loin, ajoutez du CSS dans votre thème (Apparence > Personnaliser > CSS additionnel). Ce CSS est chargé après celui de l'extension : à sélecteur égal, c'est votre règle qui s'applique (pour les boutons, ajoutez !important, voir plus bas).
 
@@ -209,6 +212,9 @@ Elles se règlent sur `.estg` (toutes les listes) ou sur `#estg-1` (la liste du 
 * `--estg-bg-alt` : fond d'une ligne sur deux et des lignes ouvertes.
 * `--estg-danger` : rouge d'Archiver au survol et des messages d'erreur.
 * `--estg-radius` : arrondi des angles.
+* `--estg-bg` : fond de la liste (ou autour, pour Éditorial).
+* `--estg-surface` : fond des cartes, des lignes et des champs.
+* `--estg-text` et `--estg-font` : couleur et police du texte.
 * `--estg-thumb` : taille des miniatures (48 px, ou 96 px selon le réglage).
 
 2. Classes stables
@@ -261,6 +267,9 @@ Non. EntryStage ne contacte aucun serveur extérieur : aucune donnée, aucune st
 Tous les crochets commencent par `estg_`. La liste complète, avec leurs paramètres, figure dans DOCUMENTATION.txt (section « For developers »).
 
 == Historique des versions ==
+
+= 1.1.0 =
+* Nouveau : la recherche, le tri, les pages, le nombre de lignes par page et les onglets mettent la liste à jour sans recharger la page (activé par défaut, désactivable par formulaire).
 
 = 1.0.0 =
 * Première version publique.

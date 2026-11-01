@@ -3,7 +3,7 @@
 	'use strict';
 
 	var T = window.estg_atelier_strings || {};
-	var root, data, fields = {}, state = { cols: [], dets: [], statuses: [] };
+	var root, data, fields = {}, state = { cols: [], dets: [], statuses: [], entry: [] };
 
 	function t( key, value ) {
 		var text = T[ key ] || key;
@@ -415,6 +415,7 @@
 		}
 	}
 
+
 	// ---------------------------------------------------------------- Sync.
 
 	function sync() {
@@ -447,7 +448,7 @@
 			fields[ f.key ] = f;
 		} );
 		state.cols = ( data.columns || [] ).map( function ( c ) {
-			return { key: String( c.key ), label: c.label || '', mode: c.mode || 'default', width: c.width || '', sort: !! c.sort, filter: !! c.filter };
+			return { key: String( c.key ), label: c.label || '', mode: c.mode || 'default', width: c.width || '', sort: !! c.sort, filter: !! c.filter, board: c.board !== false };
 		} );
 
 		root.addEventListener( 'click', function ( event ) {

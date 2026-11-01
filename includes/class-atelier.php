@@ -87,6 +87,7 @@ class Atelier {
 		echo '<button type="button" class="estga-pro-hide" data-estga-pro-hide aria-label="' . esc_attr__( 'Hide this banner', 'entrystage' ) . '"><span aria-hidden="true">×</span></button></div>';
 		echo '<div class="estga-pro-more" id="estga-pro-more" hidden>';
 		echo '<p>' . esc_html__( 'Requests, registrations, applications, orders: give each entry a status of your own (for example Received, In progress, Done), shown as a coloured label. One click moves it to the next step, one tab per status counts what is waiting at each step, and every change is written in the notes of the entry. Your team sees at a glance what is left to do.', 'entrystage' ) . '</p>';
+		echo '<p>' . esc_html__( 'At each step, e-mails can go out to the requester or to your team, late entries show in red, validated entries can be locked, and a webhook can notify Slack, Zapier or your other tools.', 'entrystage' ) . '</p>';
 		echo '<p>' . esc_html__( 'Also included: More details under each row, bulk actions, CSV export, drop-down and date filters, PDF links (Gravity PDF), custom icons, shortcode conditions and priority support.', 'entrystage' ) . '</p>';
 		if ( '' !== ENTRYSTAGE_PRO_URL ) {
 			echo '<p><a class="estga-pro-link" href="' . esc_url( ENTRYSTAGE_PRO_URL ) . '" target="_blank" rel="noopener">' . esc_html__( 'Discover EntryStage Pro', 'entrystage' ) . ' <span aria-hidden="true">↗</span></a></p>';
@@ -198,6 +199,7 @@ class Atelier {
 		echo '</div>';
 		echo '<input type="hidden" name="estg[columns]" data-estga-columns value="">';
 		self::panel_close();
+
 
 		// 4. Actions.
 		self::panel_open( 'actions' );
@@ -312,6 +314,7 @@ class Atelier {
 		self::card_close();
 		self::card_open( __( 'Tools above the list', 'entrystage' ) );
 		self::toggle( 'search', ! empty( $settings['search'] ), __( 'Search box', 'entrystage' ) );
+		self::toggle( 'ajax', ! empty( $settings['ajax'] ), __( 'Without reloading the page', 'entrystage' ), __( 'Search, sorting, pages and tabs update the list in place. The address of the page follows: it can be shared or reloaded.', 'entrystage' ) );
 		self::toggle( 'print', ! empty( $settings['print'] ), __( 'Print button', 'entrystage' ), __( 'Opens a printable page with the entries matching the filters, every page (at most 500).', 'entrystage' ) );
 		self::card_close();
 		self::card_open( __( 'Files', 'entrystage' ) );
@@ -375,6 +378,7 @@ class Atelier {
 			'after_edit'         => $pick( 'after_edit', array( 'list', 'confirmation' ), $d['after_edit'] ),
 			'search'             => $on( 'search' ),
 			'print'              => $on( 'print' ),
+			'ajax'               => $on( 'ajax' ),
 			'thumb_size'         => $pick( 'thumb_size', array( '48', '96' ), '48' ),
 			'secure_files'       => $on( 'secure_files' ),
 			'settings_version'   => ENTRYSTAGE_VERSION,

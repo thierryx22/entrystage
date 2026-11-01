@@ -77,6 +77,7 @@ class Settings {
 			'status_place'       => 'actions',    // actions | column.
 			'search'             => true,
 			'print'              => false,
+			'ajax'               => true,          // search, sorting and pages without reloading the page.
 			'column_filters'     => false,
 			'date_filter'        => false,
 			'export'             => false,
@@ -189,6 +190,7 @@ class Settings {
 
 		$s['search']         = $on( 'search' );
 		$s['print'] = $on( 'print' );
+		$s['ajax'] = array_key_exists( 'ajax', $raw ) ? $on( 'ajax' ) : true;   // on for the lists saved before the option.
 		$s['action_display'] = in_array( rgar( $raw, 'action_display' ), array( 'icons', 'both', 'text' ), true ) ? $raw['action_display'] : $d['action_display'];
 
 		if ( isset( $raw['columns'] ) ) {
@@ -397,6 +399,7 @@ class Settings {
 			'width'  => '',
 			'sort'   => true,
 			'filter' => false,
+			'board'  => true,
 		);
 	}
 
@@ -430,9 +433,12 @@ class Settings {
 					'width'  => self::clean_width( rgar( $item, 'width' ) ),
 					'sort'   => ! empty( $item['sort'] ) && '' !== Fields::sort_key( $field, $mode ),
 					'filter' => ! empty( $item['filter'] ) && Fields::is_filterable( $field ),
+					// shown on the cards of the board (Kanban); on unless turned off
+					'board'  => ! array_key_exists( 'board', (array) $item ) || ! empty( $item['board'] ),
 				);
 			} else {
 				$clean          = self::fixed_item( $key );
+				$clean['board'] = ! array_key_exists( 'board', (array) $item ) || ! empty( $item['board'] );
 				$clean['label'] = self::short_text( rgar( $item, 'label' ) );
 				$clean['width'] = self::clean_width( rgar( $item, 'width' ) );
 				$clean['sort']  = ! array_key_exists( 'sort', (array) $item ) || ! empty( $item['sort'] );
@@ -484,6 +490,7 @@ class Settings {
 					'mode'     => 'default',
 					'sort_key' => ! empty( $item['sort'] ) ? 'date_created' : '',
 					'filter'   => false,
+					'board'    => ! isset( $item['board'] ) || ! empty( $item['board'] ),
 					'column'   => null,
 				);
 			} elseif ( isset( $fields[ $key ] ) ) {
@@ -497,6 +504,7 @@ class Settings {
 					'mode'     => $item['mode'],
 					'sort_key' => ! empty( $item['sort'] ) ? Fields::sort_key( $field, $item['mode'] ) : '',
 					'filter'   => ! empty( $item['filter'] ) && Fields::is_filterable( $field ),
+					'board'    => ! isset( $item['board'] ) || ! empty( $item['board'] ),
 					'column'   => array(
 						'id'    => $key,
 						'label' => $label,

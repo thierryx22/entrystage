@@ -84,8 +84,9 @@ class Fields {
 	/**
 	 * Value of a field as Gravity Forms shows it in the entry detail.
 	 *
-	 * Gravity Forms 2.9.29 and later expect the entry as third parameter of
-	 * GFCommon::get_lead_field_display() (a warning is shown otherwise); earlier versions expect the currency.
+	 * Calls GF_Field::get_value_entry_detail(), as GFCommon::get_lead_field_display() does (deprecated in
+	 * Gravity Forms 3.0). Gravity Forms 2.9.29 and later expect the entry as second parameter; earlier versions
+	 * expect the currency.
 	 *
 	 * @param \GF_Field $field  Field.
 	 * @param mixed     $value  Value.
@@ -95,6 +96,9 @@ class Fields {
 	 */
 	public static function display( $field, $value, $entry, $format = 'html' ) {
 		$third = class_exists( 'GFForms' ) && version_compare( (string) \GFForms::$version, '2.9.29', '>=' ) ? (array) $entry : rgar( $entry, 'currency' );
+		if ( is_object( $field ) && method_exists( $field, 'get_value_entry_detail' ) ) {
+			return (string) $field->get_value_entry_detail( $value, $third, true, $format, 'screen' );
+		}
 		return (string) \GFCommon::get_lead_field_display( $field, $value, $third, true, $format, 'screen' );
 	}
 

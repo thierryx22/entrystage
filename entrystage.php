@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       EntryStage
  * Description:       Front-end list of Gravity Forms entries: your users view, edit, duplicate and archive their entries, with thumbnails, files and search. Responsive.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Thierry Daniaux
@@ -40,7 +40,7 @@ if ( defined( 'ENTRYSTAGE_VERSION' ) ) {
 	return;
 }
 
-define( 'ENTRYSTAGE_VERSION', '1.0.0' );
+define( 'ENTRYSTAGE_VERSION', '1.1.0' );
 define( 'ENTRYSTAGE_FILE', __FILE__ );
 define( 'ENTRYSTAGE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ENTRYSTAGE_URL', plugin_dir_url( __FILE__ ) );

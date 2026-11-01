@@ -1,0 +1,81 @@
+/* EntryStage — style "Editorial": no frame, small capitals in the headings, a strong rule on top of the
+   table, underlined tabs and fields, statuses as a dot and a word. Loaded after front.css. */
+.estg, .estg-space {
+	--estg-accent: #1e3a8a;
+	--estg-border: #e7e5e4;
+	--estg-muted: #78716c;
+	--estg-bg-alt: #faf8f5;
+	--estg-text: #292524;
+	--estg-ink: #1c1917;
+	--estg-bg: transparent;
+	--estg-surface: #fff;
+	--estg-radius: 3px;
+	--estg-font: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+}
+.estg-space, .estg-space > .estg, .estg { background: var(--estg-bg); }
+.estg a { color: var(--estg-accent); }
+
+/* Status tabs: words underlined */
+.estg .estg-tabs { gap: 1.6em; margin-bottom: 1.4em; border-bottom: 1px solid var(--estg-border); }
+.estg .estg-tab { padding: 0 0 .7em; margin-bottom: -1px; border: 0; border-radius: 0; color: var(--estg-muted); text-decoration: none; }
+.estg .estg-tab:hover { color: var(--estg-ink); }
+.estg .estg-tab.is-active { color: var(--estg-ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--estg-accent); }
+.estg .estg-tab.is-active .estg-count { color: var(--estg-accent); }
+
+/* Search: a lightly tinted band, framed fields, kept apart from the rule of the table */
+.estg .estg-toolbar { margin-bottom: 1.8em; }
+.estg .estg-filters { padding: 1em 1.1em; border: 0; border-radius: var(--estg-radius); background: color-mix(in srgb, var(--estg-ink) 4%, transparent); gap: .8em 1em; }
+.estg .estg-filters.is-active { box-shadow: inset 3px 0 0 var(--estg-accent); }
+.estg .estg-field > span { font-size: .72em; letter-spacing: .1em; text-transform: uppercase; color: var(--estg-muted); }
+.estg .estg-field input, .estg .estg-field select { min-height: 2.75em; padding: .3em .8em; border: 1px solid #d6d3d1; border-radius: var(--estg-radius); background: var(--estg-surface); font-size: 1em; }
+.estg .estg-field input:focus, .estg .estg-field select:focus { outline: none; border-color: var(--estg-accent); box-shadow: 0 0 0 1px var(--estg-accent); }
+.estg .estg-filters button.estg-btn { min-height: 3.35em !important; } /* 2.75em at the .82em size of the buttons */
+.estg .estg-filter-go { min-height: 2.75em; }
+.estg .estg-bulk { margin-bottom: 1em; }
+
+/* Buttons: square, small capitals */
+.estg button.estg-btn, .estg a.estg-btn { border-radius: var(--estg-radius) !important; padding: .55em 1.3em !important; font-size: .82em !important; font-weight: 600 !important; letter-spacing: .08em !important; text-transform: uppercase !important; }
+.estg button.estg-btn-ghost, .estg a.estg-btn-ghost { border-color: var(--estg-ink) !important; color: var(--estg-ink) !important; }
+.estg .estg-view-switch a.estg-btn.is-active { background: var(--estg-ink) !important; border-color: var(--estg-ink) !important; color: #fff !important; }
+
+/* Table: rule on top, headings in small capitals, generous rows */
+.estg .estg-table thead th { padding-top: .8em; padding-bottom: .8em; border-top: 2px solid var(--estg-ink); border-bottom: 1px solid var(--estg-border); font-size: .72em; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #57534e; }
+.estg .estg-table tbody td { padding-top: 1em; padding-bottom: 1em; }
+.estg .estg-table tbody tr:nth-child(even) { background: transparent; }
+.estg .estg-table tbody td:first-child:not(.estg-check), .estg .estg-table tbody td.estg-check + td { font-size: 1.08em; font-weight: 600; color: var(--estg-ink); }
+.estg .estg-sort { color: inherit; }
+.estg .estg-sort.is-active { color: var(--estg-accent); }
+
+/* Status: a dot and a word */
+.estg .estg-pill { padding: 0; border: 0; border-radius: 0; background: none; color: var(--estg-text); font-weight: 500; font-size: .95em; }
+.estg .estg-pill::before { content: ""; display: inline-block; width: .55em; height: .55em; margin-right: .5em; border-radius: 50%; background: var(--estg-pill); vertical-align: .05em; }
+
+/* Actions: plain icons */
+.estg .estg-table button.estg-act, .estg .estg-table a.estg-act, .estg .estg-board button.estg-act, .estg .estg-board a.estg-act { border-color: transparent !important; }
+
+/* Footer */
+.estg .estg-total { font-style: italic; }
+.estg .estg-page { border: 0; border-bottom: 1px solid transparent; border-radius: 0; }
+.estg .estg-page.is-active { background: none; color: var(--estg-ink); font-weight: 700; border-bottom: 2px solid var(--estg-accent); }
+.estg .estg-perpage select { border: 0; border-bottom: 1px solid #a8a29e; border-radius: 0; background: transparent; }
+
+/* Entry page */
+.estg .estg-view-title { font-family: inherit; }
+.estg .estg-detail { border-top: 2px solid var(--estg-ink); }
+.estg .estg-detail dt { background: none; font-size: .78em; letter-spacing: .08em; text-transform: uppercase; color: var(--estg-muted); }
+
+/* Phones: cards */
+@media (max-width: 700px) {
+	.estg .estg-table tr { border-color: var(--estg-border); border-top: 2px solid var(--estg-ink); border-radius: 0; }
+	.estg .estg-table td.estg-actions { background: var(--estg-bg-alt); }
+}
+.estg.estg-cards .estg-table tr { border-top: 2px solid var(--estg-ink); border-radius: 0; }
+
+/* Board (EntryStage Pro) */
+.estg .estg-board-col { padding: .2em 0 0; border: 0; border-top: 2px solid var(--estg-ink); border-radius: 0; background: none; }
+.estg .estg-board-head { padding: .5em .1em .6em; border-bottom: 1px solid var(--estg-border); font-size: .78em; letter-spacing: .1em; text-transform: uppercase; }
+.estg .estg-board-head .estg-count { padding: 0; background: none; color: var(--estg-accent); font-size: 1.1em; }
+.estg .estg-board-head .estg-board-name::before { content: ""; display: inline-block; width: .6em; height: .6em; margin-right: .5em; border-radius: 50%; background: var(--estg-pill); }
+.estg .estg-board-card { border-radius: var(--estg-radius); box-shadow: none; }
+.estg .estg-board-title { font-size: 1.08em; color: var(--estg-ink); }
+.estg .estg-board-move select { border: 0; border-bottom: 1px solid #a8a29e; border-radius: 0; background: transparent; }

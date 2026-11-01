@@ -90,6 +90,8 @@ These options only limit what the list shows. The buttons still follow the right
 
 Click a column title to sort; click again to reverse. Choose the initial sort, its direction and the number of entries per page in the settings. Visitors can change the number of entries per page (10, 25, 50 or 100) at the bottom of the list, next to the pagination.
 
+Without reloading the page (on by default; step Display, Tools above the list): the search, the sorting, the pages, the number of rows per page and the tabs update the list in place. The address of the page follows, so it can be shared or reloaded, and Back returns to the previous state of the list. On sites whose theme uses the page router of WordPress (Interactivity API, for example some block themes), the address is replaced instead, and Back goes to the previous page. Without JavaScript, or if the update fails, the page simply reloads. Buttons such as Archive, Edit, Export or Print still open their page.
+
 = Printing =
 
 Turn on "Print button" in the form settings (step Display, Tools above the list). The button opens a printable page with the entries matching the search and the filters, every page included (at most 500), in the order of the list, without buttons; the print window of the browser opens by itself. The page shows the title of the page, the date of printing, the number of entries and the search used. On paper, only the list is printed, without the header, menus and footer of the theme.
@@ -131,12 +133,13 @@ Buttons: in each form's settings, choose whether the action buttons show icons (
 Without any code, in Forms > Settings > EntryStage > Appearance (for every list of the site):
 
 * Style of the lists:
-  * EntryStage: the look of the plugin, with the colours chosen below;
+  * Editorial template: no frame, headings in small capitals, a strong rule on top of the table, underlined tabs and fields, statuses as a coloured dot;
+  * EntryStage Pro adds three more templates: Atelier, Studio and Night;
   * Minimal: layout only (columns, cards on phones, widths, Actions column limited to 25 %); colours, buttons and fonts come from your theme, lines take a neutral shade of the text colour;
   * None: no stylesheet; you style the list entirely from your theme.
-  A site that had unticked the former "Use the plugin stylesheet" box gets "None".
-* Colours (EntryStage style): main colour, lines, background of every other row, secondary text, Archive and errors. Each picker has a button to go back to the original colour.
-* Corner rounding (EntryStage style): from 0 (square) to 24 pixels.
+  A site that had unticked the former "Use the plugin stylesheet" box gets "None"; the former "EntryStage" style becomes "Editorial".
+* Colours (styles only): main colour, background colour, lines. Leave a colour empty to keep the one of the style.
+* Font of the texts (styles only): the one of the style, the one of the theme, or a set of fonts already installed on the computer of the visitor (system, humanist, geometric, classic serif). No font is loaded from another site.
 
 For finer changes, add CSS to your theme (Appearance > Customize > Additional CSS). It is loaded after the plugin stylesheet: with the same selector, your rule wins (for the buttons, add !important, see below).
 
@@ -152,6 +155,9 @@ Set them on `.estg` (every list) or on `#estg-1` (the list of form 1):
 * `--estg-bg-alt`: background of every other row and of open rows.
 * `--estg-danger`: red of Archive on hover and of error messages.
 * `--estg-radius`: corner rounding.
+* `--estg-bg`: background of the list (or around it, for Editorial).
+* `--estg-surface`: background of the cards, rows and fields.
+* `--estg-text` and `--estg-font`: colour and font of the text.
 * `--estg-thumb`: size of thumbnails (48 px, or 96 px depending on the setting).
 
 2. Stable classes
@@ -200,6 +206,7 @@ Filters:
 * `estg_prefill_values( $values, $entry, $form, $action )`: values used to fill the form.
 * `estg_editing_banner( $html, $context, $form )`: banner above a form opened from the list.
 * `estg_entry_view_html( $html, $entry, $form, $settings )`: entry view.
+* `estg_edit_note( $text, $entry, $original, $form )`: note added to an entry after an edit from the list.
 
 Actions:
 

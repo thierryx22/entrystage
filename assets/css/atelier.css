@@ -263,3 +263,15 @@
 .estga-pro-more p { margin: 8px 0 0; }
 .estga .estga-pro-link { color: var(--estga-accent); font-weight: 600; }
 @media (max-width: 600px) { .estga-pro-soon { display: none; } .estga-pro-bar .estga-pro-text { font-size: 13px; } }
+
+/* Options of a step (locked, final, late after N days): on a second line of the step. */
+.estga-status-opts { grid-column: 2 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 13px; color: var(--estga-muted); }
+.estga-opt { display: inline-flex; align-items: center; gap: 6px; }
+.estga .estga-days { width: 5.5em; min-height: 30px; padding: 2px 6px; }
+
+/* Entry page step (EntryStage Pro). */
+.estga-entry-add { display: flex; flex-wrap: wrap; align-items: center; gap: .5em; margin: 0 0 1em; }
+.estga-entry-add .estga-label { flex: 0 0 100%; margin: 0; }
+.estga-entry-add select.estga-input { flex: 1 1 16em; width: auto; max-width: 28em; margin: 0; }
+.estga-entry-add .estga-add { margin: 0; }
+.estga-entry-list .is-section { background: #f6f7f7; }

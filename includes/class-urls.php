@@ -30,7 +30,7 @@ class Urls {
 	 * @return string[]
 	 */
 	public static function own_args() {
-		return array( 'estg_f', 'estg_p', 'estg_pp', 'estg_s', 'estg_st', 'estg_o', 'estg_d', 'estg_from', 'estg_to', 'estg_c', 'estg_view', 'estg_msg', 'estg_n', 'estg_action', 'estg_entry', 'estg_nonce', 'estg_return', 'estg_export', 'estg_sc', 'estg_print' );
+		return array( 'estg_f', 'estg_p', 'estg_pp', 'estg_s', 'estg_st', 'estg_o', 'estg_d', 'estg_from', 'estg_to', 'estg_c', 'estg_v', 'estg_view', 'estg_msg', 'estg_n', 'estg_action', 'estg_entry', 'estg_nonce', 'estg_return', 'estg_export', 'estg_sc', 'estg_print' );
 	}
 
 	/**
@@ -53,6 +53,7 @@ class Urls {
 			'estg_from' => '' !== $state['from'] ? $state['from'] : null,
 			'estg_to'   => '' !== $state['to'] ? $state['to'] : null,
 			'estg_c'    => ! empty( $state['filters'] ) ? $state['filters'] : null,
+			'estg_v'    => ! empty( $state['board'] ) ? 'board' : null,
 		);
 		$args = array_merge( $args, $changes );
 		$args = array_filter(

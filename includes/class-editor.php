@@ -496,7 +496,16 @@ class Editor {
 			return;
 		}
 		$user = wp_get_current_user();
-		\GFAPI::add_note( (int) $entry['id'], (int) $user->ID, $user->display_name, __( 'Entry edited from the entry list.', 'entrystage' ), 'entrystage', 'success' );
+		/**
+		 * Filters the note added to the entry after an edit from the list.
+		 *
+		 * @param string $text     Note text.
+		 * @param array  $entry    Saved entry.
+		 * @param array  $original Entry before the edit.
+		 * @param array  $form     Form object.
+		 */
+		$text = (string) apply_filters( 'estg_edit_note', __( 'Entry edited from the entry list.', 'entrystage' ), $entry, self::$original[ $form_id ], $form );
+		\GFAPI::add_note( (int) $entry['id'], (int) $user->ID, $user->display_name, $text, 'entrystage', 'success' );
 		/**
 		 * Fires after an entry was edited from the list.
 		 *
